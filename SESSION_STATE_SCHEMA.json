@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BellaVoiceBotSessionState",
+  "description": "Standard schema for session state management across Bella Voice Bot agents",
+  "type": "object",
+  "required": ["session_id", "p_display_name", "source_agent", "target_agent", "active_flow", "financial_data"],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "Unique session identifier"
+    },
+    "p_display_name": {
+      "type": "string",
+      "description": "Customer call name"
+    },
+    "source_agent": {
+      "type": "string",
+      "enum": [
+        "AI_Greeting",
+        "AI_วางแผนการออม",
+        "AI_วางแผนการเกษียณ",
+        "AI_ตรวจสุขภาพการเงินเบื้องต้น",
+        "AI_วางแผนการลงทุน"
+      ]
+    },
+    "target_agent": {
+      "type": "string"
+    },
+    "handoff_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "active_flow": {
+      "type": "object",
+      "required": ["current_step"],
+      "properties": {
+        "current_step": {
+          "type": "string",
+          "description": "Current execution step (e.g. STEP_1, STEP_6)"
+        },
+        "pending_question": {
+          "type": ["string", "null"]
+        },
+        "fallback_counter": {
+          "type": "object",
+          "properties": {
+            "gibberish_count": { "type": "integer", "default": 0 },
+            "unclear_count": { "type": "integer", "default": 0 },
+            "silence_minutes": { "type": "integer", "default": 0 }
+          }
+        }
+      }
+    },
+    "customer_profile": {
+      "type": "object",
+      "properties": {
+        "age": { "type": ["number", "null"] },
+        "occupation": { "type": ["string", "null"] },
+        "risk_profile": { "type": ["string", "null"] }
+      }
+    },
+    "financial_data": {
+      "type": "object",
+      "properties": {
+        "saving_goal": { "type": ["string", "null"] },
+        "saving_target_amount": { "type": ["number", "null"] },
+        "saving_current_amount": { "type": ["number", "null"] },
+        "saving_monthly_amount": { "type": ["number", "null"] },
+        "saving_investment_style": {
+          "type": ["string", "null"],
+          "enum": ["ช้าแต่ชัวร์", "แล้วแต่จังหวะ", "กล้าได้กล้าเสีย", null]
+        },
+        "saving_remaining_amount": { "type": ["number", "null"] },
+        "saving_estimated_months": { "type": ["number", "null"] },
+
+        "retirement_current_age": { "type": ["number", "null"] },
+        "retirement_target_age": { "type": ["number", "null"] },
+        "retirement_monthly_expense": { "type": ["number", "null"] },
+        "retirement_current_savings": { "type": ["number", "null"] },
+        "retirement_years_remaining": { "type": ["number", "null"] },
+
+        "financial_monthly_income": { "type": ["number", "null"] },
+        "financial_monthly_expense": { "type": ["number", "null"] },
+        "financial_monthly_debt_payment": { "type": ["number", "null"] },
+        "financial_current_savings": { "type": ["number", "null"] },
+        "financial_surplus_amount": { "type": ["number", "null"] },
+        "financial_surplus_ratio": { "type": ["number", "null"] },
+        "financial_debt_ratio": { "type": ["number", "null"] },
+        "financial_emergency_months": { "type": ["number", "null"] },
+        "financial_health_level": {
+          "type": ["string", "null"],
+          "enum": ["good", "moderate", "improve", null]
+        },
+        "financial_next_action": { "type": ["string", "null"] },
+
+        "investment_topic": { "type": ["string", "null"] },
+        "investment_question": { "type": ["string", "null"] },
+        "investment_answer": { "type": ["string", "null"] },
+        "investment_interest_status": { "type": ["boolean", "null"] }
+      }
+    }
+  }
+}
