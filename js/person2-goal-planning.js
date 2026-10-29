@@ -12,7 +12,7 @@
  * ============================================================================
  */
 
-export function initGoalPlanning({ talkToBella, stateStore }) {
+export function initGoalPlanning({ talkToBella, stateStore, navigateToPage }) {
   console.log('[Person 2: Goal Planning] Initializing...');
 
   // --------------------------------------------------------------------------
@@ -78,6 +78,18 @@ export function initGoalPlanning({ talkToBella, stateStore }) {
       talkToBella(msg);
     });
   }
+
+  // ปุ่ม "สนใจเปิดบัญชี" จากการ์ดเงินฝาก -> เลื่อนลงมาที่เครื่องจำลองการออม
+  document.querySelectorAll('.btn-apply-deposit').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (typeof navigateToPage === 'function') {
+        navigateToPage('savings-simulator-box', true);
+      } else {
+        const simBox = document.getElementById('savings-simulator-box');
+        if (simBox) simBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  });
 
   // --------------------------------------------------------------------------
   // 2. โมดูล AI_วางแผนการเกษียณ (Retirement Planning Logic)

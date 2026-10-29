@@ -14,13 +14,14 @@
  * ============================================================================
  */
 
-export function initFinancialEngine({ talkToBella, showToast, stateStore }) {
+export function initFinancialEngine({ talkToBella, showToast, stateStore, navigateToPage }) {
   console.log('[Person 3: Financial Engine] Initializing...');
 
   // --------------------------------------------------------------------------
   // 1. โมดูล AI_ตรวจสุขภาพการเงินเบื้องต้น (Financial Health Quiz)
   // --------------------------------------------------------------------------
   const quizElements = {
+    progressbar: document.getElementById('quiz-progressbar'),
     steps: [
       document.getElementById('quiz-step-1'),
       document.getElementById('quiz-step-2'),
@@ -61,6 +62,9 @@ export function initFinancialEngine({ talkToBella, showToast, stateStore }) {
   let localGoal = 'loan';
 
   function setQuizStep(stepNumber) {
+    if (quizElements.progressbar) {
+      quizElements.progressbar.setAttribute('aria-valuenow', String(stepNumber));
+    }
     quizElements.steps.forEach((step, idx) => {
       if (step) step.classList.toggle('active', idx + 1 === stepNumber);
     });
@@ -68,8 +72,10 @@ export function initFinancialEngine({ talkToBella, showToast, stateStore }) {
     quizElements.nodes.forEach((node, idx) => {
       if (!node) return;
       node.classList.remove('active', 'completed');
+      node.removeAttribute('aria-current');
       if (idx + 1 === stepNumber) {
         node.classList.add('active');
+        node.setAttribute('aria-current', 'step');
       } else if (idx + 1 < stepNumber) {
         node.classList.add('completed');
       }
@@ -210,13 +216,13 @@ export function initFinancialEngine({ talkToBella, showToast, stateStore }) {
         title: 'สินเชื่อบ้านดอกเบี้ยพิเศษ (Home Loan)',
         rate: 'ดอกเบี้ยเฉลี่ย 3.25% ต่อปี',
         desc: `ประเมินวงเงินกู้ที่ผ่อนสบายตามรายได้: สูงสุดประมาณ ฿${nf.format(Math.round(income * 60))}`,
-        targetId: '#product-home-loan',
+        targetId: 'product-home-loan',
       });
       products.push({
         title: 'สินเชื่อส่วนบุคคล Bella Speedy (รวมหนี้)',
         rate: 'ดอกเบี้ยเริ่มต้น 9.99% ต่อปี',
         desc: 'รวมหนี้หลายทางเป็นก้อนเดียว ผ่อนจ่ายที่เดียว ค่างวดลดลง ดอกเบี้ยลดต้นลดดอก',
-        targetId: '#product-personal-loan',
+        targetId: 'product-personal-loan',
       });
     }
 
@@ -225,14 +231,14 @@ export function initFinancialEngine({ talkToBella, showToast, stateStore }) {
         title: 'เงินฝากประจำปลอดภาษี 24 เดือน',
         rate: 'ดอกเบี้ย 2.65% ต่อปี (ไม่เสียภาษี)',
         desc: 'สร้างเงินสำรองฉุกเฉินก้อนโต ฝากสม่ำเสมอทุกเดือน ได้รับดอกเบี้ยเต็มเม็ดเต็มหน่วย',
-        targetId: '#deposit-taxfree',
+        targetId: 'deposit-taxfree',
       });
     } else {
       products.push({
         title: 'Bella e-Savings ดิจิทัล',
         rate: 'ดอกเบี้ยสูง 2.20% ต่อปี',
         desc: 'พักเงินสำรองพร้อมใช้ รับผลตอบแทนสูง จ่ายดอกเบี้ยทุกเดือน ถอนคล่องตัว 24 ชม.',
-        targetId: '#deposit-esavings',
+        targetId: 'deposit-esavings',
       });
     }
 
@@ -243,7 +249,7 @@ export function initFinancialEngine({ talkToBella, showToast, stateStore }) {
           <div class="rec-rate">${p.rate}</div>
           <p>${p.desc}</p>
         </div>
-        <a href="${p.targetId}" class="btn btn-outline" style="align-self: flex-start; padding: 6px 14px; font-size: 0.8125rem;">
+        <a href="#${p.targetId}" class="btn btn-outline btn-jump-product" data-page="${p.targetId}" style="align-self: flex-start; padding: 6px 14px; font-size: 0.8125rem;">
           ดูรายละเอียดผลิตภัณฑ์ &rarr;
         </a>
       </div>
@@ -385,7 +391,7 @@ export function initFinancialEngine({ talkToBella, showToast, stateStore }) {
     });
   }
 
-  // ปุ่มคำนวณค่างวดจากการ์ดผลิตภัณฑ์
+  // ปุ่มคำนวณค่างวดจากการ์ดผลิตภัณฑ์ -> สลับไปหน้า #calculator พร้อมเลือกประเภทสินเชื่อ
   document.querySelectorAll('.btn-calc-loan').forEach((btn) => {
     btn.addEventListener('click', () => {
       const loanType = btn.getAttribute('data-loan-type');
@@ -393,8 +399,14 @@ export function initFinancialEngine({ talkToBella, showToast, stateStore }) {
         calcElements.loanType.value = loanType;
         calcElements.loanType.dispatchEvent(new Event('change'));
       }
-      const calcSection = document.getElementById('calculator');
-      if (calcSection) calcSection.scrollIntoView({ behavior: 'smooth' });
+      if (typeof navigateToPage === 'function') {
+        navigateToPage('calculator', true);
+      } else if (typeof window.navigateToPage === 'function') {
+        window.navigateToPage('calculator', true);
+      } else {
+        const calcSection = document.getElementById('calculator');
+        if (calcSection) calcSection.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 

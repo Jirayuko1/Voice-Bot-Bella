@@ -7,8 +7,8 @@
  *   1. การเชื่อมต่อ WebAvatar SDK (chat-widget.js)
  *   2. การจัดการ Session State กลาง (ตาม SESSION_STATE_SCHEMA.json)
  *   3. ตัวรับ-ส่งสัญญาณ Event (webavatar:mounted, onConnect, onDisconnect)
- *   4. การทำ In-App Soft Navigation (webavatar-navigate)
- *   5. หน้าต่างตั้งค่า Widget ID (Modal Settings Dialog)
+ *   4. การทำ In-App Soft Navigation (webavatar-navigate) & SPA Multi-Page Router
+ *   5. หน้าต่างตั้งค่า Widget ID (Modal Settings Dialog) & Sidebar Collapse
  *   6. ระบบแจ้งเตือน Toast Message กลาง
  * ============================================================================
  */
@@ -23,10 +23,116 @@ export const stateStore = {
   targetAgent: '',
   activeFlow: {
     currentStep: 'STEP_1',
+    currentPage: 'welcome',
     pendingQuestion: null
   },
   financialData: {}
 };
+
+// แผนที่จับคู่ ID ย่อยของการ์ด/ฟอร์ม ไปยังหน้าหลัก (.page-view)
+const ELEMENT_TO_PAGE_MAP = {
+  'product-home-loan': 'loans',
+  'product-auto-loan': 'loans',
+  'product-personal-loan': 'loans',
+  'product-sme-loan': 'loans',
+  'deposit-esavings': 'deposits',
+  'deposit-taxfree': 'deposits',
+  'deposit-stepup': 'deposits',
+  'savings-simulator-box': 'deposits',
+  'savings': 'deposits',
+  'investment': 'loans',
+  'health': 'quiz',
+};
+
+function resolvePageId(rawId) {
+  const cleanId = (rawId || '').replace(/^#/, '').trim();
+  if (!cleanId) return { pageId: 'welcome', scrollTargetId: null };
+
+  const directSection = document.getElementById(cleanId);
+  if (directSection && directSection.classList.contains('page-view')) {
+    return { pageId: cleanId, scrollTargetId: null };
+  }
+
+  if (ELEMENT_TO_PAGE_MAP[cleanId]) {
+    const mappedPage = ELEMENT_TO_PAGE_MAP[cleanId];
+    const isSubElement = directSection && !directSection.classList.contains('page-view');
+    return { pageId: mappedPage, scrollTargetId: isSubElement ? cleanId : null };
+  }
+
+  if (directSection) {
+    const parentPage = directSection.closest('.page-view');
+    if (parentPage && parentPage.id) {
+      return { pageId: parentPage.id, scrollTargetId: cleanId };
+    }
+  }
+
+  return { pageId: 'welcome', scrollTargetId: null };
+}
+
+/**
+ * สลับหน้า SPA (.page-view) และอัปเดตสถานะเมนู Sidebar
+ */
+export function navigateToPage(pageOrHash, updateHistory = true) {
+  const { pageId: targetPage, scrollTargetId } = resolvePageId(pageOrHash);
+  const pageViews = document.querySelectorAll('.page-view');
+  const navLinks = document.querySelectorAll('.sidebar-nav .nav-item');
+  const sidebar = document.getElementById('app-sidebar') || document.querySelector('.sidebar');
+  const btnMobileMenu = document.getElementById('btn-mobile-menu');
+
+  stateStore.activeFlow.currentPage = targetPage;
+
+  // 1. แสดงเฉพาะ .page-view ที่ตรงกับหน้าปัจจุบัน และซ่อนหน้าอื่นด้วย hidden
+  pageViews.forEach((section) => {
+    const isMatch = section.id === targetPage;
+    section.classList.toggle('active', isMatch);
+    if (isMatch) {
+      section.removeAttribute('hidden');
+      section.hidden = false;
+    } else {
+      section.setAttribute('hidden', '');
+      section.hidden = true;
+    }
+  });
+
+  // 2. อัปเดตปุ่มเมนูใน Sidebar และ aria-current="page"
+  navLinks.forEach((link) => {
+    const linkPage = link.getAttribute('data-page') || (link.getAttribute('href') || '').replace(/^#/, '');
+    const isMatch = linkPage === targetPage;
+    link.classList.toggle('active', isMatch);
+    if (isMatch) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
+
+  // 3. อัปเดต URL Hash โดยไม่รีโหลดหน้า
+  if (updateHistory) {
+    const newHash = `#${targetPage}`;
+    if (window.location.hash !== newHash) {
+      history.pushState({ page: targetPage }, '', newHash);
+    }
+  }
+
+  // 4. เลื่อนหน้าจอไปบนสุด หรือไปยังการ์ดเป้าหมายภายในหน้านั้น
+  if (scrollTargetId) {
+    const el = document.getElementById(scrollTargetId);
+    if (el) {
+      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
+    }
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // 5. ปิดเมนูมือถือหากเปิดอยู่
+  if (sidebar && sidebar.classList.contains('open')) {
+    sidebar.classList.remove('open');
+    if (btnMobileMenu) btnMobileMenu.setAttribute('aria-expanded', 'false');
+  }
+}
+
+// ผูกไว้ที่ window เพื่อให้สคริปต์สำรองใน index.html เรียกใช้ร่วมกันได้
+window.navigateToPage = navigateToPage;
 
 // อ้างอิง DOM Elements ของส่วนกลาง (คนที่ 1)
 const p1Elements = {
@@ -152,7 +258,7 @@ export function initOrchestrator() {
     showToast('วางสายแล้ว ขอบคุณที่ปรึกษาน้องเบลล่านะคะ');
   });
 
-  // 3. In-App Soft Navigation (SPA Routing)
+  // 3. In-App Soft Navigation (SPA Routing & Collapsible Sidebar)
   window.addEventListener('webavatar-navigate', (event) => {
     const target = event.detail?.target;
     console.log('[Person 1: WebAvatar] Navigation requested to:', target);
@@ -160,15 +266,55 @@ export function initOrchestrator() {
 
     const hashIndex = target.indexOf('#');
     if (hashIndex !== -1) {
-      const targetHash = target.substring(hashIndex);
-      const targetElem = document.querySelector(targetHash);
-      if (targetElem) {
+      const targetId = target.substring(hashIndex + 1);
+      if (targetId) {
         event.preventDefault();
-        targetElem.scrollIntoView({ behavior: 'smooth' });
-        history.pushState(null, '', targetHash);
+        navigateToPage(targetId, true);
       }
     }
   });
+
+  document.addEventListener('click', (event) => {
+    const pageLink = event.target.closest('[data-page], .sidebar-nav .nav-item');
+    if (pageLink) {
+      const targetPage = pageLink.getAttribute('data-page') || (pageLink.getAttribute('href') || '').replace(/^#/, '');
+      if (targetPage) {
+        event.preventDefault();
+        navigateToPage(targetPage, true);
+      }
+    }
+  });
+
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.replace(/^#/, '');
+    if (hash) navigateToPage(hash, false);
+  });
+
+  window.addEventListener('popstate', () => {
+    const hash = window.location.hash.replace(/^#/, '');
+    navigateToPage(hash || 'welcome', false);
+  });
+
+  const sidebar = document.getElementById('app-sidebar') || document.querySelector('.sidebar');
+  const btnSidebarCollapse = document.getElementById('btn-sidebar-collapse');
+  const btnMobileMenu = document.getElementById('btn-mobile-menu');
+
+  if (btnSidebarCollapse && sidebar && !btnSidebarCollapse.dataset.boundCollapse) {
+    btnSidebarCollapse.dataset.boundCollapse = 'true';
+    btnSidebarCollapse.addEventListener('click', (event) => {
+      event.preventDefault();
+      const isCollapsed = sidebar.classList.toggle('collapsed');
+      btnSidebarCollapse.setAttribute('aria-expanded', String(!isCollapsed));
+    });
+  }
+
+  if (btnMobileMenu && sidebar && !btnMobileMenu.dataset.boundMobile) {
+    btnMobileMenu.dataset.boundMobile = 'true';
+    btnMobileMenu.addEventListener('click', () => {
+      const isOpen = sidebar.classList.toggle('open');
+      btnMobileMenu.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
 
   // 4. Modal Settings Dialog Logic
   function closeModal() {
@@ -224,4 +370,8 @@ export function initOrchestrator() {
   });
 
   updateCallUIStatus(false);
+
+  // ตั้งค่าหน้าเริ่มต้นตาม URL Hash
+  const initialHash = window.location.hash.replace(/^#/, '');
+  navigateToPage(initialHash || 'welcome', false);
 }
