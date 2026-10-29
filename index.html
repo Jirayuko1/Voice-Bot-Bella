@@ -14,7 +14,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header / Navigation Bar -->
+  <!-- ========================================================================= -->
+  <!-- [PERSON 1: CORE ORCHESTRATOR] Header, Navigation, Call & Widget Settings -->
+  <!-- ========================================================================= -->
   <header class="site-header" id="top-nav">
     <div class="nav-container">
       <a href="#top-nav" class="brand-logo" aria-label="เบลล่าแบงก์ หน้าแรก">
@@ -179,7 +181,10 @@
       </div>
     </section>
 
-    <!-- SECTION 1: Interactive Financial Health & Matching Quiz -->
+    <!-- ======================================================================= -->
+    <!-- [PERSON 3: FINANCIAL ENGINE] Section 1: AI_ตรวจสุขภาพการเงินเบื้องต้น     -->
+    <!-- Multi-variable Health Metric Engine (Surplus, DSR, Emergency Months)      -->
+    <!-- ======================================================================= -->
     <section class="section-container" id="quiz">
       <div class="content-container">
         <div class="section-header text-center">
@@ -413,7 +418,9 @@
       </div>
     </section>
 
-    <!-- SECTION 2: Loan & Credit Products Showcase -->
+    <!-- ======================================================================= -->
+    <!-- [PERSON 3: FINANCIAL ENGINE] Section 2: Loan Products & Credit Showcase   -->
+    <!-- ======================================================================= -->
     <section class="section-container" id="loans">
       <div class="content-container">
         <div class="section-header">
@@ -560,7 +567,10 @@
       </div>
     </section>
 
-    <!-- SECTION 3: Dynamic Loan Calculator -->
+    <!-- ======================================================================= -->
+    <!-- [PERSON 3: FINANCIAL ENGINE] Section 3: Dynamic Loan & Credit Calculator  -->
+    <!-- Amortization (PMT) & Flat-Rate Calculation Logic                          -->
+    <!-- ======================================================================= -->
     <section class="section-container bg-subtle" id="calculator">
       <div class="content-container">
         <div class="section-header text-center">
@@ -676,7 +686,10 @@
       </div>
     </section>
 
-    <!-- SECTION 4: Deposit & Savings Products -->
+    <!-- ======================================================================= -->
+    <!-- [PERSON 2: GOAL PLANNING] Section 4: AI_วางแผนการออม & Deposit Products   -->
+    <!-- Savings Goal Simulator & Months Calculation Engine                        -->
+    <!-- ======================================================================= -->
     <section class="section-container" id="deposits">
       <div class="content-container">
         <div class="section-header">
@@ -859,7 +872,10 @@
       </div>
     </section>
 
-    <!-- SECTION 5: Retirement Planning (AI_วางแผนการเกษียณ) -->
+    <!-- ======================================================================= -->
+    <!-- [PERSON 2: GOAL PLANNING] Section 5: AI_วางแผนการเกษียณ                   -->
+    <!-- Retirement Years Remaining & Fund Sizing Engine                           -->
+    <!-- ======================================================================= -->
     <section class="section-container bg-subtle" id="retirement">
       <div class="content-container">
         <div class="section-header text-center">
@@ -937,7 +953,9 @@
       </div>
     </section>
 
-    <!-- SECTION 6: FAQ Accordion Section -->
+    <!-- ======================================================================= -->
+    <!-- [PERSON 1: CORE FRAMEWORK] Section 6: Global FAQ Knowledge Base           -->
+    <!-- ======================================================================= -->
     <section class="section-container" id="faq">
       <div class="content-container">
         <div class="section-header text-center">
@@ -1066,8 +1084,8 @@
     <span class="toast-message" id="toast-message"></span>
   </div>
 
-  <!-- Application Logic -->
-  <script src="app.js"></script>
+  <!-- Application Modular Bootstrap (Imports Person 1, Person 2, Person 3) -->
+  <script type="module" src="app.js"></script>
 
   <!-- WebAvatar Widget Loader (Production Build) -->
   <script>
