@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "webavatar-widget": {
+      "source": "S25214/Web-Avatar",
+      "sourceType": "github",
+      "skillPath": "skills/webavatar-widget/SKILL.md",
+      "computedHash": "50d7c1262292db93ebee58781e7246411cddc1b6177d0ef0efbd27e10de3657e"
+    }
+  }
+}
