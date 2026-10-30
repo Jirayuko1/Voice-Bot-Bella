@@ -12,7 +12,7 @@
  * ============================================================================
  */
 
-export function initGoalPlanning({ talkToBella, stateStore }) {
+export function initGoalPlanning({ talkToBella, showToast, stateStore }) {
   console.log('[Person 2: Goal Planning] Initializing...');
 
   // --------------------------------------------------------------------------
@@ -32,29 +32,41 @@ export function initGoalPlanning({ talkToBella, stateStore }) {
   function updateSavingsPlan() {
     if (!savingElements.targetInput || !savingElements.currentInput || !savingElements.monthlyInput) return;
 
-    const goal = savingElements.goalSelect.value;
-    const target = parseFloat(savingElements.targetInput.value) || 0;
-    const current = parseFloat(savingElements.currentInput.value) || 0;
-    const monthly = parseFloat(savingElements.monthlyInput.value) || 0;
+    const goal = savingElements.goalSelect ? savingElements.goalSelect.value : 'เงินสำรองฉุกเฉิน';
+    const target = Math.max(0, parseFloat(savingElements.targetInput.value) || 0);
+    const current = Math.max(0, parseFloat(savingElements.currentInput.value) || 0);
+    const monthly = Math.max(0, parseFloat(savingElements.monthlyInput.value) || 0);
 
     // คำนวณตามสูตรในสัญญาข้อมูล STATE_CONTRACT.md (คนที่ 2)
     const remaining = Math.max(0, target - current);
     const months = (monthly > 0 && remaining > 0) ? Math.ceil(remaining / monthly) : 0;
 
     // อัปเดตลง State Store กลาง
-    stateStore.financialData.saving_goal = goal;
-    stateStore.financialData.saving_target_amount = target;
-    stateStore.financialData.saving_current_amount = current;
-    stateStore.financialData.saving_monthly_amount = monthly;
-    stateStore.financialData.saving_remaining_amount = remaining;
-    stateStore.financialData.saving_estimated_months = months;
+    if (stateStore && stateStore.financialData) {
+      stateStore.financialData.saving_goal = goal;
+      stateStore.financialData.saving_target_amount = target;
+      stateStore.financialData.saving_current_amount = current;
+      stateStore.financialData.saving_monthly_amount = monthly;
+      stateStore.financialData.saving_remaining_amount = remaining;
+      stateStore.financialData.saving_estimated_months = months;
+    }
 
     const nf = new Intl.NumberFormat('th-TH');
-    savingElements.resRemaining.textContent = `฿${nf.format(remaining)}`;
+    if (savingElements.resRemaining) {
+      savingElements.resRemaining.textContent = `฿${nf.format(remaining)}`;
+    }
 
-    if (remaining === 0) {
+    if (!savingElements.resMonths || !savingElements.resYears) return;
+
+    if (target === 0) {
+      savingElements.resMonths.textContent = 'ระบุเป้าหมาย';
+      savingElements.resYears.textContent = '(กรุณาระบุจำนวนเงินเป้าหมายที่ต้องการ)';
+    } else if (remaining === 0) {
       savingElements.resMonths.textContent = 'ถึงเป้าหมายแล้ว!';
       savingElements.resYears.textContent = 'ยินดีด้วยค่ะ คุณมีเงินออมครบตามเป้าหมายแล้ว';
+    } else if (monthly === 0) {
+      savingElements.resMonths.textContent = 'ระบุยอดออม';
+      savingElements.resYears.textContent = '(กรุณาระบุเงินออมต่อเดือนมากกว่า 0 บาท)';
     } else {
       savingElements.resMonths.textContent = `${months} เดือน`;
       const y = Math.floor(months / 12);
@@ -73,11 +85,44 @@ export function initGoalPlanning({ talkToBella, stateStore }) {
 
   if (savingElements.btnAskBella) {
     savingElements.btnAskBella.addEventListener('click', () => {
-      const { saving_goal, saving_target_amount, saving_current_amount, saving_monthly_amount, saving_estimated_months } = stateStore.financialData;
-      const msg = `ผู้ใช้กำลังวางแผนการออมเพื่อ "${saving_goal}" เป้าหมาย ฿${saving_target_amount} ปัจจุบันมี ฿${saving_current_amount} ออมเดือนละ ฿${saving_monthly_amount} ใช้เวลาประมาณ ${saving_estimated_months} เดือน. ช่วยแนะนำเคล็ดลับหรือผลิตภัณฑ์การออม/ลงทุนให้หน่อยค่ะ`;
-      talkToBella(msg);
+      const { 
+        saving_goal, 
+        saving_target_amount, 
+        saving_current_amount, 
+        saving_monthly_amount, 
+        saving_remaining_amount, 
+        saving_estimated_months 
+      } = (stateStore && stateStore.financialData) || {};
+
+      let msg = '';
+      if (saving_remaining_amount === 0 && (saving_target_amount || 0) > 0) {
+        msg = `ผู้ใช้มีเงินออมครบตามเป้าหมาย "${saving_goal}" จำนวน ฿${saving_target_amount} แล้ว (มีเงินออม ฿${saving_current_amount}). ช่วยแนะนำทางเลือกการลงทุนหรือต่อยอดเงินออมให้หน่อยค่ะ`;
+      } else {
+        msg = `ผู้ใช้กำลังวางแผนการออมเพื่อ "${saving_goal}" เป้าหมาย ฿${saving_target_amount} ปัจจุบันมี ฿${saving_current_amount} ออมเดือนละ ฿${saving_monthly_amount} ใช้เวลาประมาณ ${saving_estimated_months} เดือน. ช่วยแนะนำเคล็ดลับหรือผลิตภัณฑ์การออม/ลงทุนให้หน่อยค่ะ`;
+      }
+      
+      if (typeof talkToBella === 'function') {
+        talkToBella(msg);
+      }
     });
   }
+
+  // รองรับปุ่มสนใจเปิดบัญชีเงินฝากแต่ละประเภทใน Section 4
+  const depositAccountNames = {
+    esavings: 'Bella e-Savings ดอกเบี้ยสูง 1.80%',
+    taxfree: 'เงินฝากประจำปลอดภาษี 24 เดือน',
+    stepup: 'เงินฝากประจำ Step-Up 36 เดือน',
+  };
+
+  document.querySelectorAll('.btn-apply-deposit').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const accKey = btn.getAttribute('data-account');
+      const accTitle = depositAccountNames[accKey] || 'บัญชีเงินฝาก';
+      if (typeof showToast === 'function') {
+        showToast(`บันทึกความสนใจ: ${accTitle}`);
+      }
+    });
+  });
 
   // --------------------------------------------------------------------------
   // 2. โมดูล AI_วางแผนการเกษียณ (Retirement Planning Logic)
@@ -96,29 +141,66 @@ export function initGoalPlanning({ talkToBella, stateStore }) {
   function updateRetirementPlan() {
     if (!retireElements.currentAge || !retireElements.targetAge) return;
 
-    const curAge = parseInt(retireElements.currentAge.value) || 30;
-    const tarAge = parseInt(retireElements.targetAge.value) || 60;
-    const monthlyExp = parseFloat(retireElements.monthlyExpense.value) || 20000;
-    const curSavings = parseFloat(retireElements.currentSavings.value) || 0;
+    const curAge = parseInt(retireElements.currentAge.value) || 0;
+    const tarAge = parseInt(retireElements.targetAge.value) || 0;
+    const monthlyExp = Math.max(0, parseFloat(retireElements.monthlyExpense.value) || 0);
+    const curSavings = Math.max(0, parseFloat(retireElements.currentSavings.value) || 0);
+
+    const nf = new Intl.NumberFormat('th-TH');
+
+    // กฎเหล็ก: อายุเกษียณต้องมากกว่าอายุปัจจุบัน (Rule 1: target_age > current_age)
+    if (tarAge <= curAge) {
+      if (retireElements.resYearsLeft) {
+        retireElements.resYearsLeft.textContent = 'ระบุอายุใหม่';
+      }
+      const subYears = retireElements.resYearsLeft?.nextElementSibling;
+      if (subYears) {
+        subYears.textContent = '(อายุเกษียณต้องมากกว่าอายุปัจจุบัน)';
+      }
+      if (retireElements.resFundNeeded) {
+        retireElements.resFundNeeded.textContent = '฿0';
+      }
+      if (retireElements.resMonthlyTarget) {
+        retireElements.resMonthlyTarget.textContent = 'กรุณาระบุอายุให้ถูกต้อง';
+      }
+      return;
+    }
 
     // คำนวณตามสูตรในสัญญาข้อมูล STATE_CONTRACT.md (คนที่ 2)
-    const yearsLeft = Math.max(1, tarAge - curAge);
-    const fundNeeded = monthlyExp * 12 * 20; // สมมติฐาน 20 ปีหลังเกษียณ
+    const yearsLeft = tarAge - curAge;
+    const fundNeeded = monthlyExp * 12 * 20; // สมมติฐานใช้ชีวิต 20 ปีหลังเกษียณ
     const remainingToSave = Math.max(0, fundNeeded - curSavings);
     const monthsLeft = yearsLeft * 12;
     const monthlyTarget = monthsLeft > 0 ? Math.round(remainingToSave / monthsLeft) : 0;
 
     // อัปเดตลง State Store กลาง
-    stateStore.financialData.retirement_current_age = curAge;
-    stateStore.financialData.retirement_target_age = tarAge;
-    stateStore.financialData.retirement_monthly_expense = monthlyExp;
-    stateStore.financialData.retirement_current_savings = curSavings;
-    stateStore.financialData.retirement_years_remaining = yearsLeft;
+    if (stateStore && stateStore.financialData) {
+      stateStore.financialData.retirement_current_age = curAge;
+      stateStore.financialData.retirement_target_age = tarAge;
+      stateStore.financialData.retirement_monthly_expense = monthlyExp;
+      stateStore.financialData.retirement_current_savings = curSavings;
+      stateStore.financialData.retirement_years_remaining = yearsLeft;
+    }
 
-    const nf = new Intl.NumberFormat('th-TH');
-    retireElements.resYearsLeft.textContent = `${yearsLeft} ปี`;
-    retireElements.resFundNeeded.textContent = `฿${nf.format(Math.round(fundNeeded))}`;
-    retireElements.resMonthlyTarget.textContent = `฿${nf.format(monthlyTarget)} / เดือน`;
+    if (retireElements.resYearsLeft) {
+      retireElements.resYearsLeft.textContent = `${yearsLeft} ปี`;
+      const subYears = retireElements.resYearsLeft.nextElementSibling;
+      if (subYears) {
+        subYears.textContent = `(ก่อนถึงอายุเกษียณ ${tarAge} ปี)`;
+      }
+    }
+
+    if (retireElements.resFundNeeded) {
+      retireElements.resFundNeeded.textContent = `฿${nf.format(Math.round(fundNeeded))}`;
+    }
+
+    if (retireElements.resMonthlyTarget) {
+      if (remainingToSave === 0 && fundNeeded > 0) {
+        retireElements.resMonthlyTarget.textContent = 'กองทุนเกษียณพร้อมแล้ว!';
+      } else {
+        retireElements.resMonthlyTarget.textContent = `฿${nf.format(monthlyTarget)} / เดือน`;
+      }
+    }
   }
 
   [retireElements.currentAge, retireElements.targetAge, retireElements.monthlyExpense, retireElements.currentSavings].forEach((el) => {
@@ -127,10 +209,35 @@ export function initGoalPlanning({ talkToBella, stateStore }) {
 
   if (retireElements.btnAskBella) {
     retireElements.btnAskBella.addEventListener('click', () => {
-      const { retirement_current_age, retirement_target_age, retirement_years_remaining } = stateStore.financialData;
-      const fund = retireElements.resFundNeeded.textContent;
-      const msg = `ผู้ใช้กำลังวางแผนเกษียณ: อายุปัจจุบัน ${retirement_current_age} ปี ต้องการเกษียณตอนอายุ ${retirement_target_age} ปี (เหลือเวลาเตรียมตัว ${retirement_years_remaining} ปี) กองทุนเกษียณที่ต้องเตรียมประมาณ ${fund}. ช่วยประเมินแผนเกษียณและแนะนำทางเลือกการออม/ลงทุนให้หน่อยค่ะ`;
-      talkToBella(msg);
+      const { 
+        retirement_current_age, 
+        retirement_target_age, 
+        retirement_years_remaining, 
+        retirement_monthly_expense,
+        retirement_current_savings 
+      } = (stateStore && stateStore.financialData) || {};
+
+      // ป้องกันกรณีป้อนอายุไม่ถูกต้อง
+      if (!retirement_target_age || !retirement_current_age || retirement_target_age <= retirement_current_age) {
+        if (typeof showToast === 'function') {
+          showToast('กรุณาระบุอายุเกษียณให้มากกว่าอายุปัจจุบันก่อนปรึกษาเบลล่าค่ะ');
+        }
+        return;
+      }
+
+      const fund = retireElements.resFundNeeded?.textContent || '';
+      const monthlyTarget = retireElements.resMonthlyTarget?.textContent || '';
+
+      let msg = '';
+      if (monthlyTarget.includes('พร้อมแล้ว')) {
+        msg = `ผู้ใช้เตรียมเงินเกษียณพร้อมแล้ว: ปัจจุบันอายุ ${retirement_current_age} ปี เกษียณตอนอายุ ${retirement_target_age} ปี (มีเงินเก็บเกษียณ ฿${retirement_current_savings} สำหรับกองทุน ${fund}). ช่วยแนะนำการบริหารความมั่งคั่งหรือการลงทุนความเสี่ยงต่ำเพื่อรักษาเงินต้นให้หน่อยค่ะ`;
+      } else {
+        msg = `ผู้ใช้กำลังวางแผนเกษียณ: อายุปัจจุบัน ${retirement_current_age} ปี ต้องการเกษียณตอนอายุ ${retirement_target_age} ปี (เหลือเวลาเตรียมตัว ${retirement_years_remaining} ปี) คาดใช้จ่ายเดือนละ ฿${retirement_monthly_expense} กองทุนที่ต้องเตรียมประมาณ ${fund} (เป้าหมายออม ${monthlyTarget}). ช่วยประเมินแผนเกษียณและแนะนำทางเลือกการออม/ลงทุนให้หน่อยค่ะ`;
+      }
+
+      if (typeof talkToBella === 'function') {
+        talkToBella(msg);
+      }
     });
   }
 
