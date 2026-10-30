@@ -67,13 +67,18 @@
   padding: 0;
 }
 
-html, body {
+html {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+}
+
+body {
   min-height: 100vh;
   font-family: var(--font-family-thai);
   background-color: var(--bg-primary);
   color: var(--text-main);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -110,6 +115,7 @@ input, button, select, textarea {
 
 .app-layout {
   display: flex;
+  align-items: flex-start;
   min-height: 100vh;
   width: 100%;
   position: relative;
@@ -123,6 +129,7 @@ input, button, select, textarea {
 .sidebar {
   width: var(--sidebar-width);
   flex-shrink: 0;
+  align-self: flex-start;
   background: var(--sidebar-bg);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -337,6 +344,7 @@ input, button, select, textarea {
 .main-canvas {
   flex: 1;
   min-width: 0;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
