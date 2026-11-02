@@ -48,6 +48,7 @@ function bootstrapBellaApp() {
   // เริ่มต้นระบบวางแผนการออมและเกษียณ (คนที่ 2) พร้อมส่ง Shared Dependencies
   initGoalPlanning({
     talkToBella,
+    showToast,
     stateStore,
     navigateToPage
   });
@@ -64,6 +65,7 @@ function bootstrapBellaApp() {
   window.__BELLA_STATE__ = stateStore;
 }
 
+// ผูกตัวดักฟังการโหลดหน้าเว็บ
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', bootstrapBellaApp);
 } else {
