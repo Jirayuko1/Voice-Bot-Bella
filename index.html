@@ -1,1465 +1,1473 @@
-<!DOCTYPE html>
-<html lang="th">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bella Digital Bank - ธนาคารดิจิทัลและที่ปรึกษาการเงินอัจฉริยะ</title>
-  <meta name="description"
-    content="วางแผนการเงิน เปรียบเทียบสินเชื่อ กู้เงิน บัญชีเงินฝากดอกเบี้ยสูง และตรวจสุขภาพการเงิน พร้อมผู้ช่วย AI เสมือนจริง น้องเบลล่า">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css?v=8">
-</head>
-
-<body>
-  <div class="app-layout">
-
-    <!-- ==================== LEFT SIDEBAR ==================== -->
-    <aside class="sidebar" id="app-sidebar" aria-label="แถบเมนูหลัก">
-      <!-- Brand Header -->
-      <div class="sidebar-brand">
-        <a href="#welcome" class="brand-link" data-page="welcome" aria-label="เบลล่าแบงก์ หน้าแรก" title="Bella Bank">
-          <div class="brand-logo-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor" />
-              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-          </div>
-          <div class="brand-titles">
-            <span class="brand-name">Bella Bank</span>
-            <span class="brand-tagline">AI Wealth</span>
-          </div>
-        </a>
-      </div>
-
-      <!-- Navigation List -->
-      <nav class="sidebar-nav" aria-label="เมนูหลัก">
-        <ul class="nav-list">
-          <li>
-            <a href="#welcome" class="nav-item active" data-page="welcome" aria-current="page"
-              title="หน้าแรก (ต้อนรับ)">
-              <span class="nav-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1V9.5z" />
-                </svg>
-              </span>
-              <span class="nav-label">หน้าแรก</span>
-            </a>
-          </li>
-          <li>
-            <a href="#quiz" class="nav-item" data-page="quiz" title="ประเมินสุขภาพการเงิน">
-              <span class="nav-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                  <polyline points="7 12 10 12 11.5 9.5 13.5 14.5 15 12 17 12" />
-                </svg>
-              </span>
-              <span class="nav-label">ประเมินสุขภาพการเงิน</span>
-            </a>
-          </li>
-          <li>
-            <a href="#loans" class="nav-item" data-page="loans" title="วางแผนการลงทุน">
-              <span class="nav-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                  <polyline points="17 6 23 6 23 12" />
-                </svg>
-              </span>
-              <span class="nav-label">วางแผนการลงทุน</span>
-            </a>
-          </li>
-          <li>
-            <a href="#deposits" class="nav-item" data-page="deposits" title="วางแผนการออม & บัญชีเงินฝาก" id="nav-link-deposits">
-              <span class="nav-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M19 11c0-3.87-3.58-7-8-7-3.95 0-7.23 2.5-7.88 5.8-.62.32-1.12.9-1.12 1.7 0 .95.67 1.73 1.56 1.93.45 1.48 1.48 1.74 2.84 3.57L6 20h3l.5-2h3l.5 2h3l-.4-2.85c1.82-.98 3.08-2.66 3.33-4.65H21v-2h-2z" />
-                  <path d="M10 8h3" />
-                  <circle cx="7.5" cy="10.5" r="0.8" fill="currentColor" />
-                </svg>
-              </span>
-              <span class="nav-label">วางแผนการออม & เงินฝาก</span>
-            </a>
-          </li>
-          <li>
-            <a href="#calculator" class="nav-item" data-page="calculator" title="คำนวณค่างวด">
-              <span class="nav-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="4" y="2" width="16" height="20" rx="2" />
-                  <line x1="8" y1="6" x2="16" y2="6" />
-                  <line x1="8" y1="11" x2="10" y2="11" />
-                  <line x1="14" y1="11" x2="16" y2="11" />
-                  <line x1="8" y1="15" x2="10" y2="15" />
-                  <line x1="14" y1="15" x2="16" y2="15" />
-                </svg>
-              </span>
-              <span class="nav-label">คำนวณค่างวด</span>
-            </a>
-          </li>
-          <li>
-            <a href="#retirement" class="nav-item" data-page="retirement" title="วางแผนเกษียณ">
-              <span class="nav-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 21V11" />
-                  <path d="M12 11C12 7.5 8.5 5 5 6c1.5 2.5 4.5 3.5 7 5z" />
-                  <path d="M12 11c0-3.5 3.5-6 7-5-1.5 2.5-4.5 3.5-7 5z" />
-                  <path d="M12 11c-2.5-2-6.5-1.5-8 1.5 3 0 5.5 0 8-1.5z" />
-                  <path d="M12 11c2.5-2 6.5-1.5 8 1.5-3 0-5.5 0-8-1.5z" />
-                  <path d="M8 21h8" />
-                </svg>
-              </span>
-              <span class="nav-label">วางแผนเกษียณ</span>
-            </a>
-          </li>
-          <li>
-            <a href="#faq" class="nav-item" data-page="faq" title="คำถามที่พบบ่อย">
-              <span class="nav-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                  <line x1="12" y1="17" x2="12.01" y2="17" />
-                </svg>
-              </span>
-              <span class="nav-label">คำถามที่พบบ่อย</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <!-- Sidebar Bottom Collapse Action -->
-      <div class="sidebar-bottom-actions">
-        <button type="button" class="nav-item sidebar-collapse-btn" id="btn-sidebar-collapse"
-          aria-label="ย่อหรือขยายแถบเมนูด้านซ้าย" aria-expanded="true" aria-controls="app-sidebar"
-          title="Collapse / Expand">
-          <span class="nav-icon" aria-hidden="true">
-            <svg class="collapse-chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </span>
-          <span class="nav-label">Collapse</span>
-        </button>
-      </div>
-    </aside>
-
-    <!-- ==================== MAIN CONTENT AREA ==================== -->
-    <main class="main-canvas" id="main-content">
-
-      <!-- Top Header Action Controls (Call Bella & Settings Modal Trigger) -->
-      <header class="canvas-topbar">
-        <button type="button" class="btn-mobile-menu" id="btn-mobile-menu" aria-label="เปิดเมนูนำทาง"
-          aria-expanded="false">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-
-        <div class="header-actions">
-          <!-- Call Bella Button -->
-          <button type="button" class="btn btn-call-bella" id="btn-call-bella"
-            aria-label="เริ่มคุยด้วยเสียงกับน้องเบลล่า AI">
-            <span class="pulse-dot" id="call-status-indicator" aria-hidden="true"></span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-              <line x1="12" y1="19" x2="12" y2="23" />
-              <line x1="8" y1="23" x2="16" y2="23" />
-            </svg>
-            <span id="call-btn-text">คุยเสียงกับเบลล่า</span>
-          </button>
-
-          <!-- Widget Settings Toggle Button -->
-          <button type="button" class="btn btn-icon-glass" id="btn-open-settings"
-            aria-label="ตั้งค่าการเชื่อมต่อ WebAvatar Widget">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="3" />
-              <path
-                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0-2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-            </svg>
-          </button>
-        </div>
-      </header>
-
-      <!-- ==================== PAGE 1: หน้าแรก (HERO / WELCOME) ==================== -->
-      <section class="page-view active" id="welcome" aria-labelledby="heading-welcome">
-        <div class="content-container hero-grid">
-          <div class="hero-content">
-            <div class="pill-badge">
-              <span class="pill-sparkle">✨</span> นวัตกรรมธนาคารดิจิทัลแห่งอนาคต
-            </div>
-            <h1 id="heading-welcome" class="hero-title">
-              วางแผนการเงิน สินเชื่อ & เงินฝาก <span class="text-gradient">ด้วย AI เบลล่า</span>
-            </h1>
-            <p class="hero-subtitle">
-              ค้นหาผลิตภัณฑ์สินเชื่อดอกเบี้ยต่ำ หรือบัญชีเงินฝากผลตอบแทนสูงที่เหมาะกับคุณที่สุด
-              พร้อมประเมินสุขภาพการเงินและรับคำปรึกษาผ่าน 3D Voice Avatar เสมือนจริง
-            </p>
-            <div class="hero-cta-group">
-              <a href="#quiz" class="btn btn-primary" data-page="quiz"
-                aria-label="เริ่มทำแบบประเมินค้นหาผลิตภัณฑ์การเงิน">
-                <span>เริ่มทำแบบประเมินการเงิน (Quiz)</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </a>
-              <a href="#loans" class="btn btn-outline" data-page="loans" aria-label="วางแผนการลงทุนและสินเชื่อ">
-                วางแผนการลงทุน & สินเชื่อ
-              </a>
-            </div>
-
-            <!-- Feature Highlights Stat Bar -->
-            <div class="hero-stats">
-              <div class="stat-item">
-                <span class="stat-number">2.20%</span>
-                <span class="stat-label">ดอกเบี้ยเงินฝาก e-Savings</span>
-              </div>
-              <div class="stat-divider" aria-hidden="true"></div>
-              <div class="stat-item">
-                <span class="stat-number">3.25%</span>
-                <span class="stat-label">สินเชื่อบ้านดอกเบี้ยพิเศษ</span>
-              </div>
-              <div class="stat-divider" aria-hidden="true"></div>
-              <div class="stat-item">
-                <span class="stat-number">5 นาที</span>
-                <span class="stat-label">รู้ผลประเมินวงเงินเบื้องต้น</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hero Interactive Preview Card -->
-          <div class="hero-visual">
-            <div class="assistant-card glass-panel">
-              <div class="assistant-header">
-                <div class="assistant-avatar-badge">
-                  <div class="avatar-ring">
-                    <span class="avatar-emoji" role="img" aria-label="รูปแทนผู้ช่วยเบลล่า">👩🏻‍💼</span>
-                  </div>
-                  <div class="assistant-status">
-                    <strong>น้องเบลล่า (Bella)</strong>
-                    <span class="status-indicator">
-                      <span class="status-dot"></span> พร้อมให้คำปรึกษาตลอด 24 ชม.
-                    </span>
-                  </div>
-                </div>
-                <div class="widget-sync-tag" id="widget-sync-tag">
-                  <span class="tag-dot"></span> WebAvatar Synced
-                </div>
-              </div>
-
-              <div class="assistant-bubble">
-                <p>
-                  "สวัสดีค่ะคุณลูกค้า เบลล่าพร้อมช่วยแนะนำสินเชื่อเงินกู้ บัญชีเงินฝาก วางแผนการลงทุน
-                  หรือตรวจสุขภาพการเงินเบื้องต้นให้ทันทีค่ะ สามารถพูดคุยด้วยเสียง
-                  หรือคลิกเลือกบริการด้านล่างได้เลยนะคะ!"
-                </p>
-              </div>
-
-              <div class="quick-service-tiles">
-                <a href="#loans" class="service-tile" data-page="loans" aria-label="วางแผนการลงทุนและสินเชื่อ">
-                  <div class="tile-icon">📈</div>
-                  <div class="tile-info">
-                    <strong>วางแผนการลงทุน</strong>
-                    <span>กองทุนรวม & สินเชื่อ</span>
-                  </div>
-                </a>
-                <a href="#deposits" class="service-tile" data-page="deposits" aria-label="วางแผนการออมและบัญชีเงินฝาก" id="tile-savings-plan">
-                  <div class="tile-icon">🎯</div>
-                  <div class="tile-info">
-                    <strong>วางแผนการออม</strong>
-                    <span>เป้าหมายเงินออม & เงินฝาก</span>
-                  </div>
-                </a>
-                <a href="#quiz" class="service-tile" data-page="quiz" aria-label="ตรวจสุขภาพการเงิน">
-                  <div class="tile-icon">🩺</div>
-                  <div class="tile-info">
-                    <strong>ตรวจสุขภาพการเงิน</strong>
-                    <span>คำนวณหนี้ & สภาพคล่อง</span>
-                  </div>
-                </a>
-                <a href="#retirement" class="service-tile" data-page="retirement" aria-label="วางแผนเกษียณ">
-                  <div class="tile-icon">🏖️</div>
-                  <div class="tile-info">
-                    <strong>วางแผนวัยเกษียณ</strong>
-                    <span>คำนวณเงินก้อนที่ต้องมี</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== PAGE 2: ประเมินสุขภาพการเงิน (QUIZ - คนที่ 3) ==================== -->
-      <section class="page-view" id="quiz" aria-labelledby="heading-quiz" hidden>
-        <div class="content-container">
-          <div class="section-header text-center">
-            <div class="pill-badge">🩺 ตรวจสุขภาพการเงินเบื้องต้น</div>
-            <h2 id="heading-quiz" class="section-title">ประเมินสุขภาพการเงินเบื้องต้น</h2>
-            <p class="section-desc">
-              ตรวจสอบสภาพคล่องรายเดือน สัดส่วนภาระหนี้สิน (DSR) และระยะเวลาเงินสำรองฉุกเฉิน
-              เพื่อดูภาพรวมสถานะทางการเงินของคุณ
-            </p>
-          </div>
-
-          <div class="quiz-wrapper glass-panel">
-            <!-- Quiz Stepper Progress Header (3 Steps: รายรับ-รายจ่าย -> หนี้ & เงินสำรอง -> ผลการวิเคราะห์) -->
-            <div class="quiz-progress-bar" id="quiz-progressbar" role="progressbar" aria-valuenow="1" aria-valuemin="1"
-              aria-valuemax="3" aria-label="ขั้นตอนแบบประเมินสุขภาพการเงิน">
-              <div class="step-node active" id="step-node-1" aria-current="step">
-                <span class="step-num">1</span>
-                <span class="step-text">รายรับ-รายจ่าย</span>
-              </div>
-              <div class="step-line" aria-hidden="true"></div>
-              <div class="step-node" id="step-node-2">
-                <span class="step-num">2</span>
-                <span class="step-text">หนี้ & เงินสำรอง</span>
-              </div>
-              <div class="step-line" aria-hidden="true"></div>
-              <div class="step-node" id="step-node-3">
-                <span class="step-num">3</span>
-                <span class="step-text">ผลการวิเคราะห์</span>
-              </div>
-            </div>
-
-            <!-- Quiz Form Steps -->
-            <form id="financial-quiz-form" onsubmit="return false;">
-
-              <!-- Step 1: Income & Expense -->
-              <div class="quiz-step active" id="quiz-step-1">
-                <h3 class="step-question">ข้อมูลรายรับและรายจ่ายเฉลี่ยต่อเดือน</h3>
-                <p class="step-helper">สามารถบอกตัวเลขให้น้องเบลล่ากรอกให้ด้วยเสียง หรือพิมพ์ตัวเลขด้านล่างได้เลยค่ะ</p>
-
-                <div class="form-inputs-grid">
-                  <div class="form-group">
-                    <label for="quiz-income">รายรับเฉลี่ยต่อเดือน (บาท) <span class="required">*</span></label>
-                    <div class="input-with-affix">
-                      <input type="number" id="quiz-income" name="financial_monthly_income" placeholder="เช่น 45000"
-                        min="1000" step="500" required>
-                      <span class="affix">บาท/เดือน</span>
-                    </div>
-                    <span class="field-hint">รวมเงินเดือน โบนัสเฉลี่ย หรือรายได้เสริม (ต้องมากกว่า 0 บาท)</span>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="quiz-expense">รายจ่ายจำเป็นเฉลี่ยต่อเดือน (บาท) <span class="required">*</span></label>
-                    <div class="input-with-affix">
-                      <input type="number" id="quiz-expense" name="financial_monthly_expense" placeholder="เช่น 20000"
-                        min="0" step="500" required>
-                      <span class="affix">บาท/เดือน</span>
-                    </div>
-                    <span class="field-hint">ค่ากินอยู่ ค่าน้ำไฟ ค่าเดินทาง (ยังไม่รวมผ่อนหนี้)</span>
-                  </div>
-                </div>
-
-                <div class="step-actions">
-                  <div></div>
-                  <button type="button" class="btn btn-primary" id="btn-quiz-next-1"
-                    aria-label="ไปขั้นตอนถัดไป ภาระหนี้และเงินสำรอง">
-                    ถัดไป (หนี้สินและเงินสำรอง) &rarr;
-                  </button>
-                </div>
-              </div>
-
-              <!-- Step 2: Debt & Emergency Savings -->
-              <div class="quiz-step" id="quiz-step-2" hidden>
-                <h3 class="step-question">ภาระผ่อนชำระหนี้สินและเงินออมสำรอง</h3>
-                <p class="step-helper">วิเคราะห์สัดส่วนภาระหนี้ต่อรายได้ (DSR)
-                  และจำนวนเดือนที่เงินสำรองฉุกเฉินรองรับค่าใช้จ่าย</p>
-
-                <div class="form-inputs-grid">
-                  <div class="form-group">
-                    <label for="quiz-debt">ภาระผ่อนหนี้สินต่อเดือนปัจจุบัน (บาท)</label>
-                    <div class="input-with-affix">
-                      <input type="number" id="quiz-debt" name="financial_monthly_debt_payment"
-                        placeholder="เช่น 5000 (ถ้าไม่มีให้กรอก 0)" min="0" step="500" required>
-                      <span class="affix">บาท/เดือน</span>
-                    </div>
-                    <span class="field-hint">รวมผ่อนบ้าน รถ บัตรเครดิต หรือสินเชื่ออื่นๆ</span>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="quiz-savings">เงินออมสำรองพร้อมใช้ในปัจจุบัน (บาท)</label>
-                    <div class="input-with-affix">
-                      <input type="number" id="quiz-savings" name="financial_current_savings" placeholder="เช่น 120000"
-                        min="0" step="1000" required>
-                      <span class="affix">บาท</span>
-                    </div>
-                    <span class="field-hint">เงินฝากออมทรัพย์ หรือกองทุนตลาดเงินที่ถอนได้ทันที</span>
-                  </div>
-                </div>
-
-                <div class="step-actions">
-                  <button type="button" class="btn btn-outline" id="btn-quiz-prev-2"
-                    aria-label="ย้อนกลับขั้นตอนก่อนหน้า">
-                    &larr; ย้อนกลับ
-                  </button>
-                  <button type="button" class="btn btn-primary" id="btn-quiz-calculate"
-                    aria-label="คำนวณและประมวลผลสุขภาพการเงิน">
-                    ประมวลผลสุขภาพการเงิน &rarr;
-                  </button>
-                </div>
-              </div>
-
-              <!-- Step 3: Results & Matched Banking Products -->
-              <div class="quiz-step" id="quiz-step-3" hidden>
-                <div class="quiz-result-container">
-                  <div class="result-badge-wrap">
-                    <div class="health-level-badge" id="result-health-badge">
-                      <span class="health-icon" id="result-health-icon">🌟</span>
-                      <div class="health-title-group">
-                        <span class="sub-caption">ระดับสุขภาพการเงินของคุณ:</span>
-                        <h4 class="health-status-name" id="result-health-title">สุขภาพการเงินดีเยี่ยม (Good)</h4>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Financial Health Metrics Grid -->
-                  <div class="health-metrics-grid">
-                    <div class="metric-card">
-                      <span class="metric-label">เงินคงเหลือสุทธิ/เดือน</span>
-                      <strong class="metric-val" id="result-surplus-amount">฿20,000</strong>
-                      <span class="metric-sub" id="result-surplus-ratio">คิดเป็น 44.4% ของรายรับ</span>
-                    </div>
-                    <div class="metric-card">
-                      <span class="metric-label">ภาระหนี้สิน (DSR)</span>
-                      <strong class="metric-val" id="result-debt-ratio">11.1%</strong>
-                      <span class="metric-sub" id="result-debt-status">เกณฑ์ปลอดภัย (&le; 35%)</span>
-                    </div>
-                    <div class="metric-card">
-                      <span class="metric-label">เงินสำรองฉุกเฉิน</span>
-                      <strong class="metric-val" id="result-emergency-months">6.0 เดือน</strong>
-                      <span class="metric-sub" id="result-emergency-status">สำรองฉุกเฉินเพียงพอ (&ge; 6 เดือน)</span>
-                    </div>
-                  </div>
-
-                  <!-- AI Advice Box -->
-                  <div class="ai-advice-box">
-                    <div class="advice-header">
-                      <span class="bell-icon">💡</span>
-                      <strong>คำแนะนำเบื้องต้นจากน้องเบลล่า:</strong>
-                    </div>
-                    <p id="result-ai-advice-text">
-                      วิเคราะห์ผลสุขภาพการเงินเบื้องต้น พร้อมแนะนำผลิตภัณฑ์ที่เหมาะสม
-                    </p>
-                  </div>
-
-                  <!-- Matched Recommended Products -->
-                  <div class="recommended-products-section">
-                    <h4 class="rec-title">✨ ผลิตภัณฑ์และบริการที่เหมาะสมกับสถานะการเงินของคุณ</h4>
-                    <div class="rec-cards-grid" id="recommended-products-container">
-                      <!-- Populated dynamically via JS -->
-                    </div>
-                  </div>
-
-                  <!-- Reset Action -->
-                  <div class="result-sync-actions">
-                    <button type="button" class="btn btn-outline" id="btn-quiz-reset"
-                      aria-label="เริ่มทำแบบประเมินใหม่อีกครั้ง">
-                      &larr; แก้ไขตัวเลข / ประเมินใหม่อีกครั้ง
-                    </button>
-                  </div>
-
-                </div>
-              </div>
-
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== PAGE 3: วางแผนการลงทุน & สินเชื่อ (INVESTMENT & LOANS - คนที่ 3) ==================== -->
-      <section class="page-view" id="loans" aria-labelledby="heading-loans" hidden>
-        <div class="content-container" id="investment">
-          <div class="section-header">
-            <div class="pill-badge">📈 วางแผนการลงทุน & สินเชื่อ</div>
-            <h2 id="heading-loans" class="section-title">วางแผนการลงทุน & กองทุนรวมแนะนำ</h2>
-            <p class="section-desc">
-              ศึกษาความรู้พื้นฐานการลงทุน ค้นหาตัวอย่างกองทุนรวมตามระดับความเสี่ยง และนัดหมายที่ปรึกษาทางการเงินผู้เชี่ยวชาญ
-            </p>
-          </div>
-
-          <!-- ข้อควรรู้ด้านการลงทุน -->
-          <div class="ai-advice-box p3-compliance-banner" role="note" aria-label="ข้อควรรู้ด้านการลงทุน">
-            <div class="advice-header">
-              <span class="bell-icon">🛡️</span>
-              <strong>ข้อควรรู้ก่อนตัดสินใจลงทุน:</strong>
-            </div>
-            <p>
-              การลงทุนมีความเสี่ยง ผู้ลงทุนควรศึกษาข้อมูลนโยบายกองทุนและทำความเข้าใจลักษณะสินค้า เงื่อนไขผลตอบแทน และความเสี่ยงก่อนตัดสินใจลงทุน ทั้งนี้ ผลการดำเนินงานในอดีตมิได้เป็นสิ่งยืนยันถึงผลการดำเนินงานในอนาคต
-            </p>
-          </div>
-
-          <!-- ==================== หมวดที่ 1: เรื่องน่ารู้การลงทุน ==================== -->
-          <div class="savings-simulator-card glass-panel p3-invest-block" id="investment-knowledge-section">
-            <div class="sim-header">
-              <div class="sim-badge">📚 เรื่องน่ารู้การลงทุน</div>
-              <h3 class="sim-title">คลังความรู้พื้นฐานสำหรับการเริ่มต้นลงทุนอย่างมั่นใจ</h3>
-            </div>
-
-            <div class="p3-knowledge-tabs" role="tablist" aria-label="หัวข้อเรื่องน่ารู้การลงทุน">
-              <button type="button" class="p3-knowledge-tab active" data-knowledge-key="start" role="tab"
-                aria-selected="true">
-                <span class="p3-kt-icon">🌱</span>
-                <div class="p3-kt-info">
-                  <strong>วิธีเริ่มลงทุนสำหรับมือใหม่</strong>
-                  <span>การเตรียมเงินสำรอง & ขั้นตอนเริ่มต้น</span>
-                </div>
-              </button>
-
-              <button type="button" class="p3-knowledge-tab" data-knowledge-key="risk" role="tab" aria-selected="false">
-                <span class="p3-kt-icon">⚖️</span>
-                <div class="p3-kt-info">
-                  <strong>ความเสี่ยงคืออะไร?</strong>
-                  <span>ระดับความเสี่ยง 1–8 & ผลตอบแทน</span>
-                </div>
-              </button>
-
-              <button type="button" class="p3-knowledge-tab" data-knowledge-key="dca" role="tab" aria-selected="false">
-                <span class="p3-kt-icon">🗓️</span>
-                <div class="p3-kt-info">
-                  <strong>DCA คืออะไร?</strong>
-                  <span>ทยอยลงทุนสม่ำเสมอ ถัวเฉลี่ยต้นทุน</span>
-                </div>
-              </button>
-
-              <button type="button" class="p3-knowledge-tab" data-knowledge-key="portfolio" role="tab"
-                aria-selected="false">
-                <span class="p3-kt-icon">🧭</span>
-                <div class="p3-kt-info">
-                  <strong>การจัดพอร์ต & Rebalancing</strong>
-                  <span>กระจายสินทรัพย์ & ปรับสมดุลพอร์ต</span>
-                </div>
-              </button>
-            </div>
-
-            <!-- กล่องแสดงรายละเอียดความรู้ -->
-            <div class="p3-knowledge-viewer" id="investment-knowledge-viewer" aria-live="polite">
-              <div class="p3-kv-header">
-                <div>
-                  <h4 id="kd-title" class="p3-kv-title">เริ่มต้นลงทุนอย่างไรดีสำหรับมือใหม่?</h4>
-                </div>
-                <button type="button" class="btn btn-outline" id="btn-ask-bella-knowledge"
-                  style="padding: 8px 16px; font-size: 0.85rem;">
-                  🎙️ ให้น้องเบลล่าอธิบายหัวข้อนี้
-                </button>
-              </div>
-              <p id="kd-body" class="p3-kv-body">
-                ก่อนเริ่มลงทุน ควรสำรวจสุขภาพการเงินและกันเงินสำรองฉุกเฉินอย่างน้อย 3–6
-                เท่าของค่าใช้จ่ายรายเดือนไว้ในสินทรัพย์สภาพคล่องสูง จากนั้นจึงกำหนดเป้าหมายการลงทุน
-                ทำแบบประเมินความเสี่ยง (Suitability Test) และเลือกลงทุนในสินทรัพย์ที่เข้าใจนโยบายอย่างชัดเจน
-              </p>
-              <ul id="kd-highlights" class="product-perks p3-kv-perks">
-                <li>กันเงินสำรองฉุกเฉิน 3–6 เดือนของค่าใช้จ่ายจำเป็นก่อนเริ่มลงทุน</li>
-                <li>กำหนดเป้าหมายและระยะเวลาการลงทุนให้ชัดเจน</li>
-                <li>ทำแบบประเมินความเสี่ยง (Suitability Test) เพื่อทราบระดับความเสี่ยงที่ยอมรับได้</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- ==================== หมวดที่ 2: ตัวอย่างกองทุนแนะนำ ==================== -->
-          <div class="savings-simulator-card glass-panel p3-invest-block" id="investment-funds-section">
-            <div class="sim-header">
-              <div class="sim-badge">📊 ตัวอย่างกองทุนแนะนำ</div>
-              <h3 class="sim-title">ค้นหาและกรองตัวอย่างกองทุนรวมตามระดับความเสี่ยง</h3>
-            </div>
-
-            <!-- ฟอร์มค้นหาและกรองกองทุน -->
-            <form id="investment-fund-search-form" class="p3-fund-search-bar" onsubmit="return false;">
-              <div class="form-group" style="flex: 1; min-width: 240px; margin: 0;">
-                <label for="investment-fund-search-input">ค้นหาชื่อกองทุน หรือนโยบายการลงทุน</label>
-                <input type="text" id="investment-fund-search-input" name="investment_question" class="form-input"
-                  placeholder="เช่น BELLA-MMF, BELLA-SET50, ตราสารหนี้, หุ้นโลก">
-              </div>
-              <div class="form-group" style="min-width: 220px; margin: 0;">
-                <label for="investment-risk-filter">กรองตามระดับความเสี่ยง</label>
-                <select id="investment-risk-filter" class="form-select">
-                  <option value="all">ทุกระดับความเสี่ยง (ทั้งหมด)</option>
-                  <option value="low">ความเสี่ยงต่ำ (ระดับ 1–4)</option>
-                  <option value="medium">ความเสี่ยงปานกลาง (ระดับ 5)</option>
-                  <option value="high">ความเสี่ยงสูง (ระดับ 6–8)</option>
-                </select>
-              </div>
-              <div class="p3-fund-search-actions">
-                <button type="submit" class="btn btn-primary" id="btn-investment-fund-search">
-                  ค้นหากองทุน
-                </button>
-                <button type="button" class="btn btn-outline" id="btn-investment-fund-reset">
-                  ล้างค่า
-                </button>
-              </div>
-            </form>
-
-            <!-- กล่องแสดงข้อความเมื่อไม่พบชื่อกองทุน -->
-            <div class="p3-unverified-alert" id="investment-unverified-alert" role="alert" hidden>
-              <div class="p3-ua-main">
-                <span class="p3-ua-icon" aria-hidden="true">⚠️</span>
-                <div>
-                  <strong>ไม่พบข้อมูลกองทุนที่ค้นหา</strong>
-                  <p id="investment-unverified-message">
-                    "ขออภัยค่ะ ตอนนี้เบลล่ายังไม่มีรายละเอียดกองทุนที่สามารถยืนยันได้
-                    คุณลูกค้าสนใจนัดหมายที่ปรึกษาทางการเงินเพิ่มเติมไหมคะ?"
-                  </p>
-                </div>
-              </div>
-              <button type="button" class="btn btn-call-bella" id="btn-unverified-book-advisor">
-                <span>นัดหมายที่ปรึกษาทางการเงิน</span>
-              </button>
-            </div>
-
-            <!-- การ์ดตัวอย่างกองทุน -->
-            <div class="products-grid" id="investment-funds-grid">
-              <!-- Populated dynamically via person3-financial-engine.js -->
-            </div>
-          </div>
-
-          <!-- ==================== หมวดที่ 3: ปรึกษาที่ปรึกษาการเงิน ==================== -->
-          <div class="savings-simulator-card glass-panel p3-invest-block" id="investment-advisor-section">
-            <div class="sim-result-banner">
-              <div class="res-stat" style="flex: 1; min-width: 260px;">
-                <span class="sim-badge" style="align-self: flex-start;">👩🏻‍💼 ปรึกษาผู้เชี่ยวชาญ</span>
-                <h3 class="sim-title" style="margin-top: 4px;">นัดหมายพูดคุยกับที่ปรึกษาทางการเงิน</h3>
-                <p class="sim-desc">
-                  หากคุณลูกค้าต้องการทำแบบประเมินความเสี่ยง (Suitability Test) หรือรับคำแนะนำจัดพอร์ตเฉพาะบุคคล
-                  สามารถกดปุ่มเพื่อนัดหมายหรือให้เบลล่าติดต่อเจ้าหน้าที่ผู้เชี่ยวชาญได้ทันทีค่ะ
-                </p>
-                <div class="p3-advisor-status" id="investment-advisor-status" hidden>
-                  ✅ <span id="investment-advisor-status-text">บันทึกความสนใจนัดหมายที่ปรึกษาทางการเงินเรียบร้อยแล้วค่ะ</span>
-                </div>
-              </div>
-              <div class="res-action">
-                <button type="button" class="btn btn-call-bella" id="btn-request-advisor"
-                  aria-label="นัดหมายที่ปรึกษาทางการเงิน">
-                  <span>นัดหมายที่ปรึกษาทางการเงิน</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- ==================== ส่วนประเภทสินเชื่อและเงินกู้ ==================== -->
-          <div class="section-header" style="margin-top: 56px;">
-            <div class="pill-badge">💳 ประเภทสินเชื่อและการกู้เงิน</div>
-            <h3 class="section-title" style="font-size: 1.65rem;">ผลิตภัณฑ์สินเชื่อดอกเบี้ยพิเศษ</h3>
-            <p class="section-desc">
-              เลือกประเภทสินเชื่อที่สนใจเพื่อส่งค่าไปคำนวณค่างวดต่อเดือนในหน้าเครื่องคำนวณค่างวดได้ทันที
-            </p>
-          </div>
-
-          <div class="products-grid">
-
-            <!-- Product 1: Home Loan -->
-            <article class="product-card glass-panel" id="product-home-loan">
-              <div class="product-tag popular-tag">ยอดนิยม</div>
-              <div class="product-icon-wrap">🏡</div>
-              <h3 class="product-name">สินเชื่อบ้านใหม่ & รีไฟแนนซ์</h3>
-              <p class="product-summary">สานฝันมีบ้านหรือคอนโดเป็นของตนเอง ผ่อนสบาย วงเงินกู้สูงสุด 100% ของราคาประเมิน
-              </p>
-              <div class="product-highlights">
-                <div class="highlight-item">
-                  <span class="hl-label">ดอกเบี้ยเริ่มต้น</span>
-                  <span class="hl-value text-gradient">3.25% ต่อปี</span>
-                  <span class="hl-note">(เฉลี่ย 3 ปีแรก)</span>
-                </div>
-                <div class="highlight-item">
-                  <span class="hl-label">ผ่อนนานสูงสุด</span>
-                  <span class="hl-value">40 ปี</span>
-                  <span class="hl-note">อายุผู้กู้รวมไม่เกิน 70 ปี</span>
-                </div>
-              </div>
-              <ul class="product-perks">
-                <li>ฟรีค่าธรรมเนียมประเมินราคาหลักประกัน</li>
-                <li>ผ่อนค่างวดแบบขั้นบันได สบายกระเป๋า</li>
-                <li>กู้ร่วมได้สูงสุด 3 คน</li>
-              </ul>
-              <div class="product-card-actions">
-                <button type="button" class="btn btn-primary btn-calc-loan" data-loan-type="home"
-                  aria-label="คำนวณค่างวดสินเชื่อบ้าน">
-                  คำนวณค่างวดบ้าน
-                </button>
-                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="สินเชื่อบ้าน"
-                  aria-label="สอบถามเบลล่าเรื่องสินเชื่อบ้าน">
-                  ถามเบลล่า
-                </button>
-              </div>
-            </article>
-
-            <!-- Product 2: Auto Loan -->
-            <article class="product-card glass-panel" id="product-auto-loan">
-              <div class="product-icon-wrap">🚗</div>
-              <h3 class="product-name">สินเชื่อรถยนต์ & รถแลกเงิน</h3>
-              <p class="product-summary">ออกรถใหม่ รถมือสอง หรือเปลี่ยนรถคู่ใจเป็นเงินสด วงเงินสูงสุด 100%
-                ดอกเบี้ยคงที่สบายใจ</p>
-              <div class="product-highlights">
-                <div class="highlight-item">
-                  <span class="hl-label">ดอกเบี้ยเริ่มต้น</span>
-                  <span class="hl-value text-gradient">2.79% ต่อปี</span>
-                  <span class="hl-note">(ดอกเบี้ยคงที่ Flat Rate)</span>
-                </div>
-                <div class="highlight-item">
-                  <span class="hl-label">ผ่อนนานสูงสุด</span>
-                  <span class="hl-value">7 ปี (84 เดือน)</span>
-                  <span class="hl-note">เลือกระยะเวลาตามใจ</span>
-                </div>
-              </div>
-              <ul class="product-perks">
-                <li>รถยังมีขับ ไม่ต้องจอดรถค้ำประกัน</li>
-                <li>อนุมัติไวภายใน 1 วันทำการ</li>
-                <li>ปิดหนี้ก่อนกำหนดรับส่วนลดดอกเบี้ย</li>
-              </ul>
-              <div class="product-card-actions">
-                <button type="button" class="btn btn-primary btn-calc-loan" data-loan-type="auto"
-                  aria-label="คำนวณค่างวดสินเชื่อรถยนต์">
-                  คำนวณค่างวดรถ
-                </button>
-                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="สินเชื่อรถยนต์"
-                  aria-label="สอบถามเบลล่าเรื่องสินเชื่อรถยนต์">
-                  ถามเบลล่า
-                </button>
-              </div>
-            </article>
-
-            <!-- Product 3: Personal Loan -->
-            <article class="product-card glass-panel" id="product-personal-loan">
-              <div class="product-tag">ไม่ต้องค้ำ</div>
-              <div class="product-icon-wrap">💼</div>
-              <h3 class="product-name">สินเชื่อส่วนบุคคล Bella Speedy</h3>
-              <p class="product-summary">เสริมสภาพคล่องฉุกเฉิน รวมหนี้เพื่อลดภาระดอกเบี้ย
-                ไม่ต้องใช้หลักทรัพย์หรือบุคคลค้ำประกัน</p>
-              <div class="product-highlights">
-                <div class="highlight-item">
-                  <span class="hl-label">ดอกเบี้ยเริ่มต้น</span>
-                  <span class="hl-value text-gradient">9.99% ต่อปี</span>
-                  <span class="hl-note">(ลดต้นลดดอก Effective Rate)</span>
-                </div>
-                <div class="highlight-item">
-                  <span class="hl-label">วงเงินสูงสุด</span>
-                  <span class="hl-value">5 เท่าของรายได้</span>
-                  <span class="hl-note">สูงสุด 2,000,000 บาท</span>
-                </div>
-              </div>
-              <ul class="product-perks">
-                <li>คิดดอกเบี้ยตามยอดเงินที่เบิกใช้จริง</li>
-                <li>ผ่อนชำระขั้นต่ำเริ่มต้นเพียง 500 บาท/เดือน</li>
-                <li>สมัครผ่านแอป รับเงินโอนเข้าบัญชีทันที</li>
-              </ul>
-              <div class="product-card-actions">
-                <button type="button" class="btn btn-primary btn-calc-loan" data-loan-type="personal"
-                  aria-label="คำนวณค่างวดสินเชื่อส่วนบุคคล">
-                  คำนวณสินเชื่อบุคคล
-                </button>
-                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="สินเชื่อส่วนบุคคล"
-                  aria-label="สอบถามเบลล่าเรื่องสินเชื่อส่วนบุคคล">
-                  ถามเบลล่า
-                </button>
-              </div>
-            </article>
-
-            <!-- Product 4: Business SME Loan -->
-            <article class="product-card glass-panel" id="product-sme-loan">
-              <div class="product-icon-wrap">🏢</div>
-              <h3 class="product-name">สินเชื่อเพื่อธุรกิจ SME & สตาร์ทอัพ</h3>
-              <p class="product-summary">เติมทุนหมุนเวียน ขยายสาขา สั่งซื้อสต็อกสินค้า
-                สำหรับผู้ประกอบการนิติบุคคลและบุคคลธรรมดา</p>
-              <div class="product-highlights">
-                <div class="highlight-item">
-                  <span class="hl-label">ดอกเบี้ยเริ่มต้น</span>
-                  <span class="hl-value text-gradient">MLR - 1.0%</span>
-                  <span class="hl-note">ตามระดับความเสี่ยงธุรกิจ</span>
-                </div>
-                <div class="highlight-item">
-                  <span class="hl-label">วงเงินสูงสุด</span>
-                  <span class="hl-value">20 ล้านบาท</span>
-                  <span class="hl-note">รองรับ บสย. ค้ำประกัน</span>
-                </div>
-              </div>
-              <ul class="product-perks">
-                <li>มีทั้งเงินกู้ระยะยาว (Term Loan) และ O/D</li>
-                <li>ปลอดชำระเงินต้นสูงสุด 12 เดือนแรก</li>
-                <li>ทีมผู้เชี่ยวชาญดูแลโครงสร้างการเงินให้คำแนะนำ</li>
-              </ul>
-              <div class="product-card-actions">
-                <button type="button" class="btn btn-primary btn-calc-loan" data-loan-type="sme"
-                  aria-label="คำนวณค่างวดสินเชื่อธุรกิจ">
-                  คำนวณสินเชื่อ SME
-                </button>
-                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="สินเชื่อธุรกิจ SME"
-                  aria-label="สอบถามเบลล่าเรื่องสินเชื่อธุรกิจ">
-                  ถามเบลล่า
-                </button>
-              </div>
-            </article>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== PAGE 4: บัญชีเงินฝาก & วางแผนการออม (DEPOSITS) ==================== -->
-      <section class="page-view" id="deposits" aria-labelledby="heading-deposits" hidden>
-        <div class="content-container">
-          <div class="section-header">
-            <div class="pill-badge">💰 บัญชีเงินฝากและการออม</div>
-            <h2 id="heading-deposits" class="section-title">ประเภทบัญชีเงินฝากดอกเบี้ยสูง เพื่อทุกเป้าหมาย</h2>
-            <p class="section-desc">
-              ให้เงินทำงานอย่างปลอดภัย รับดอกเบี้ยสูงกว่าบัญชีออมทรัพย์ทั่วไป พร้อมระบบวางแผนการออมตามเป้าหมาย
-            </p>
-          </div>
-
-          <div class="products-grid">
-
-            <!-- Deposit Product 1 -->
-            <article class="product-card glass-panel" id="deposit-esavings">
-              <div class="product-tag popular-tag">แนะนำ</div>
-              <div class="product-icon-wrap">📱</div>
-              <h3 class="product-name">Bella e-Savings บัญชีเงินฝากดิจิทัล</h3>
-              <p class="product-summary">เปิดบัญชีง่ายผ่านมือถือ ไม่มียอดขั้นต่ำ รับดอกเบี้ยสูงตั้งแต่บาทแรก
-                ถอนได้ตลอดเวลาไม่เสียสิทธิ์</p>
-              <div class="product-highlights">
-                <div class="highlight-item">
-                  <span class="hl-label">อัตราดอกเบี้ยสูงถึง</span>
-                  <span class="hl-value text-gradient">2.20% ต่อปี</span>
-                  <span class="hl-note">สำหรับยอดเงินฝากไม่เกิน 100,000 บาท</span>
-                </div>
-                <div class="highlight-item">
-                  <span class="hl-label">การจ่ายดอกเบี้ย</span>
-                  <span class="hl-value">ทุกเดือน</span>
-                  <span class="hl-note">โอนเข้าบัญชีอัตโนมัติ</span>
-                </div>
-              </div>
-              <ul class="product-perks">
-                <li>เปิดบัญชีออนไลน์ ไม่ต้องไปสาขา ไม่มีสมุดคู่ฝาก</li>
-                <li>โอนเงิน จ่ายบิล ฟรีค่าธรรมเนียมไม่จำกัดครั้ง</li>
-                <li>จัดการแบ่งกระเป๋าเงินออมย่อย (Saving Pockets) ได้</li>
-              </ul>
-              <div class="product-card-actions">
-                <button type="button" class="btn btn-primary btn-apply-deposit" data-account="esavings"
-                  aria-label="เปิดบัญชีเงินฝาก Bella e-Savings">
-                  สนใจเปิดบัญชี
-                </button>
-                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="บัญชีเงินฝาก e-Savings"
-                  aria-label="สอบถามเบลล่าเรื่องบัญชี e-Savings">
-                  ถามเบลล่า
-                </button>
-              </div>
-            </article>
-
-            <!-- Deposit Product 2 -->
-            <article class="product-card glass-panel" id="deposit-taxfree">
-              <div class="product-icon-wrap">🎯</div>
-              <h3 class="product-name">เงินฝากประจำปลอดภาษี 24 เดือน</h3>
-              <p class="product-summary">ฝึกวินัยการออมอย่างสม่ำเสมอ ฝากเท่ากันทุกเดือน ปลอดภาษีดอกเบี้ยเงินฝาก 100%</p>
-              <div class="product-highlights">
-                <div class="highlight-item">
-                  <span class="hl-label">อัตราดอกเบี้ย</span>
-                  <span class="hl-value text-gradient">2.65% ต่อปี</span>
-                  <span class="hl-note">ปลอดภาษี ณ ที่จ่าย (ได้รับเต็ม)</span>
-                </div>
-                <div class="highlight-item">
-                  <span class="hl-label">ยอดฝากต่อเดือน</span>
-                  <span class="hl-value">1,000 - 25,000 บ.</span>
-                  <span class="hl-note">ฝากติดต่อกัน 24 เดือน</span>
-                </div>
-              </div>
-              <ul class="product-perks">
-                <li>ไม่เสียภาษีดอกเบี้ยเงินฝาก 15%</li>
-                <li>ตั้งตัดเงินฝากอัตโนมัติจากบัญชีเงินเดือนได้</li>
-                <li>เหมาะสำหรับการสร้างเงินเก็บก้อนแรก</li>
-              </ul>
-              <div class="product-card-actions">
-                <button type="button" class="btn btn-primary btn-apply-deposit" data-account="taxfree"
-                  aria-label="เปิดบัญชีเงินฝากประจำปลอดภาษี">
-                  สนใจเปิดบัญชี
-                </button>
-                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="เงินฝากประจำปลอดภาษี"
-                  aria-label="สอบถามเบลล่าเรื่องเงินฝากปลอดภาษี">
-                  ถามเบลล่า
-                </button>
-              </div>
-            </article>
-
-            <!-- Deposit Product 3 -->
-            <article class="product-card glass-panel" id="deposit-stepup">
-              <div class="product-icon-wrap">📈</div>
-              <h3 class="product-name">เงินฝากประจำ Step-Up 36 เดือน</h3>
-              <p class="product-summary">ยิ่งฝากนาน ดอกเบี้ยยิ่งเพิ่มขึ้น
-                เหมาะสำหรับเงินเย็นที่ต้องการผลตอบแทนแน่นอนและปลอดภัย</p>
-              <div class="product-highlights">
-                <div class="highlight-item">
-                  <span class="hl-label">ดอกเบี้ยสูงสุดถึง</span>
-                  <span class="hl-value text-gradient">3.00% ต่อปี</span>
-                  <span class="hl-note">(เฉลี่ย 2.50% ต่อปี)</span>
-                </div>
-                <div class="highlight-item">
-                  <span class="hl-label">ยอดเงินเปิดบัญชี</span>
-                  <span class="hl-value">ขั้นต่ำ 10,000 บ.</span>
-                  <span class="hl-note">จ่ายดอกเบี้ยทุก 3 เดือน</span>
-                </div>
-              </div>
-              <ul class="product-perks">
-                <li>อัตราดอกเบี้ยเพิ่มขึ้นเป็นขั้นบันไดทุกปี</li>
-                <li>ถอนก่อนครบกำหนดบางส่วนได้ตามเกณฑ์</li>
-                <li>คุ้มครองเงินฝากตามสถาบันคุ้มครองเงินฝาก</li>
-              </ul>
-              <div class="product-card-actions">
-                <button type="button" class="btn btn-primary btn-apply-deposit" data-account="stepup"
-                  aria-label="เปิดบัญชีเงินฝาก Step-Up">
-                  สนใจเปิดบัญชี
-                </button>
-                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="เงินฝากประจำ Step-Up"
-                  aria-label="สอบถามเบลล่าเรื่องเงินฝาก Step-Up">
-                  ถามเบลล่า
-                </button>
-              </div>
-            </article>
-
-          </div>
-
-          <!-- Savings Goal Simulator Box (ตรงตาม AI_วางแผนการออม) -->
-          <div class="savings-simulator-card glass-panel" id="savings-simulator-box">
-            <div class="sim-header">
-              <div class="sim-badge">🎯 AI วางแผนการออมตามเป้าหมาย</div>
-              <h3 class="sim-title">ต้องใช้เวลากี่เดือน ถึงจะเก็บเงินได้ตามเป้า?</h3>
-              <p class="sim-desc">คำนวณระยะเวลาออมเงินและจำนวนเงินที่ต้องเก็บเพิ่ม ตามหลักการวางแผนการเงินของเบลล่า</p>
-            </div>
-
-            <form id="savings-plan-form" class="sim-form" onsubmit="return false;">
-              <div class="sim-inputs-grid">
-
-                <div class="form-group">
-                  <label for="saving-goal-select">เป้าหมายการออมของคุณ</label>
-                  <select id="saving-goal-select" name="saving_goal" class="form-select">
-                    <option value="เงินสำรองฉุกเฉิน">เผื่อฉุกเฉิน</option>
-                    <option value="เงินดาวน์บ้าน">ดาวน์บ้าน</option>
-                    <option value="เงินดาวน์รถ">ดาวน์รถ</option>
-                    <option value="ออมไว้ลงทุน">ออมไว้ลงทุน</option>
-                    <option value="การศึกษาของลูก">การศึกษาของลูก</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="saving-target-input">จำนวนเงินเป้าหมายที่ต้องการ (บาท)</label>
-                  <div class="input-with-affix">
-                    <input type="number" id="saving-target-input" name="saving_target_amount" value="300000" min="5000"
-                      step="5000" class="form-input">
-                    <span class="affix">บาท</span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="saving-current-input">เงินออมที่มีอยู่ปัจจุบัน (บาท)</label>
-                  <div class="input-with-affix">
-                    <input type="number" id="saving-current-input" name="saving_current_amount" value="50000" min="0"
-                      step="5000" class="form-input">
-                    <span class="affix">บาท</span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="saving-monthly-input">ตั้งใจจะออมเพิ่มเดือนละ (บาท)</label>
-                  <div class="input-with-affix">
-                    <input type="number" id="saving-monthly-input" name="saving_monthly_amount" value="10000" min="500"
-                      step="500" class="form-input">
-                    <span class="affix">บาท/เดือน</span>
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="sim-result-banner" id="savings-sim-result">
-                <div class="res-stat">
-                  <span class="res-label">เงินที่ต้องออมเพิ่มอีก:</span>
-                  <strong class="res-num text-warning" id="saving-res-remaining">฿250,000</strong>
-                </div>
-                <div class="res-divider" aria-hidden="true"></div>
-                <div class="res-stat">
-                  <span class="res-label">ระยะเวลาที่ต้องใช้:</span>
-                  <strong class="res-num text-gradient" id="saving-res-months">25 เดือน</strong>
-                  <span class="res-sub" id="saving-res-years">(ประมาณ 2 ปี 1 เดือน)</span>
-                </div>
-                <div class="res-action">
-                  <button type="button" class="btn btn-call-bella" id="btn-saving-ask-bella"
-                    aria-label="ให้น้องเบลล่าช่วยวางแผนการออมนี้">
-                    <span>ปรึกษาเบลล่าเพื่อวางแผนออม</span>
-                  </button>
-                </div>
-              </div>
-            </form>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== PAGE 5: คำนวณค่างวด (CALCULATOR) ==================== -->
-      <section class="page-view" id="calculator" aria-labelledby="heading-calculator" hidden>
-        <div class="content-container">
-          <div class="section-header text-center">
-            <div class="pill-badge">🧮 เครื่องคำนวณเงินกู้</div>
-            <h2 id="heading-calculator" class="section-title">คำนวณค่างวดและแผนการผ่อนชำระ</h2>
-            <p class="section-desc">
-              ประเมินค่างวดต่อเดือน ดอกเบี้ยรวม และวางแผนการกู้เงินให้สอดคล้องกับรายได้ของคุณ
-            </p>
-          </div>
-
-          <div class="calculator-card glass-panel">
-            <div class="calculator-grid">
-
-              <!-- Controls Form Column -->
-              <form id="loan-calculator-form" class="calc-form" onsubmit="return false;">
-
-                <!-- Select Loan Type -->
-                <div class="form-group">
-                  <label for="calc-loan-type">ประเภทสินเชื่อที่ต้องการคำนวณ</label>
-                  <select id="calc-loan-type" name="calc_loan_type" class="form-select">
-                    <option value="home" data-rate="3.25" data-years="30">สินเชื่อบ้าน (อัตราดอกเบี้ย 3.25% ต่อปี)
-                    </option>
-                    <option value="auto" data-rate="2.79" data-years="5">สินเชื่อรถยนต์ (อัตราดอกเบี้ยคงที่ 2.79% ต่อปี)
-                    </option>
-                    <option value="personal" data-rate="9.99" data-years="3">สินเชื่อส่วนบุคคล (อัตราดอกเบี้ย 9.99%
-                      ต่อปี)</option>
-                    <option value="sme" data-rate="6.50" data-years="7">สินเชื่อธุรกิจ SME (อัตราดอกเบี้ย 6.50% ต่อปี)
-                    </option>
-                  </select>
-                </div>
-
-                <!-- Loan Amount Slider & Input -->
-                <div class="form-group">
-                  <div class="label-row">
-                    <label for="calc-amount-input">วงเงินที่ต้องการกู้ (บาท)</label>
-                    <span class="live-val-badge" id="calc-amount-display">฿1,500,000</span>
-                  </div>
-                  <input type="number" id="calc-amount-input" name="calc_amount" min="10000" max="20000000" step="10000"
-                    value="1500000" class="form-input">
-                  <input type="range" id="calc-amount-range" min="50000" max="10000000" step="50000" value="1500000"
-                    class="range-slider" aria-label="ปรับวงเงินกู้">
-                  <div class="range-ticks">
-                    <span>50,000</span>
-                    <span>5,000,000</span>
-                    <span>10,000,000</span>
-                  </div>
-                </div>
-
-                <!-- Term Slider & Input -->
-                <div class="form-group">
-                  <div class="label-row">
-                    <label for="calc-term-input">ระยะเวลาผ่อนชำระ (ปี)</label>
-                    <span class="live-val-badge" id="calc-term-display">30 ปี (360 งวด)</span>
-                  </div>
-                  <input type="number" id="calc-term-input" name="calc_term" min="1" max="40" step="1" value="30"
-                    class="form-input">
-                  <input type="range" id="calc-term-range" min="1" max="35" step="1" value="30" class="range-slider"
-                    aria-label="ปรับระยะเวลาผ่อนชำระ">
-                  <div class="range-ticks">
-                    <span>1 ปี</span>
-                    <span>15 ปี</span>
-                    <span>35 ปี</span>
-                  </div>
-                </div>
-
-                <!-- Interest Rate Input -->
-                <div class="form-group">
-                  <div class="label-row">
-                    <label for="calc-rate-input">อัตราดอกเบี้ยต่อปี (%)</label>
-                    <span class="field-hint">ปรับเปลี่ยนได้ตามโปรโมชั่น</span>
-                  </div>
-                  <div class="input-with-affix">
-                    <input type="number" id="calc-rate-input" name="calc_rate" min="1.0" max="25.0" step="0.05"
-                      value="3.25" class="form-input">
-                    <span class="affix">% ต่อปี</span>
-                  </div>
-                </div>
-
-              </form>
-
-              <!-- Results Summary Column -->
-              <div class="calc-result-panel">
-                <div class="monthly-payment-card">
-                  <span class="payment-title">ค่างวดที่ต้องผ่อนชำระประมาณ</span>
-                  <div class="payment-amount text-gradient" id="calc-monthly-payment">฿6,524</div>
-                  <span class="payment-unit">ต่อเดือน</span>
-                  <p class="payment-disclaimer">*เป็นตัวเลขประมาณการเบื้องต้น ค่างวดจริงขึ้นอยู่กับเงื่อนไขการอนุมัติ
-                  </p>
-                </div>
-
-                <div class="breakdown-list">
-                  <div class="breakdown-item">
-                    <span class="b-label">วงเงินกู้สุทธิ:</span>
-                    <span class="b-val" id="calc-breakdown-principal">฿1,500,000</span>
-                  </div>
-                  <div class="breakdown-item">
-                    <span class="b-label">ดอกเบี้ยรวมตลอดสัญญา:</span>
-                    <span class="b-val text-warning" id="calc-breakdown-interest">฿848,640</span>
-                  </div>
-                  <div class="breakdown-item total-row">
-                    <span class="b-label">ยอดชำระรวมทั้งหมด:</span>
-                    <span class="b-val" id="calc-breakdown-total">฿2,348,640</span>
-                  </div>
-                  <div class="breakdown-item">
-                    <span class="b-label">รายได้ขั้นต่ำที่แนะนำ:</span>
-                    <span class="b-val text-success" id="calc-recommended-income">฿18,640 / เดือน</span>
-                  </div>
-                </div>
-
-                <div class="calc-panel-actions">
-                  <button type="button" class="btn btn-call-bella w-full" id="btn-calc-ask-bella"
-                    aria-label="ให้น้องเบลล่าช่วยประเมินวงเงินและค่างวดนี้">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
-                      <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                    </svg>
-                    <span>ปรึกษาเบลล่าเรื่องวงเงินกู้นี้</span>
-                  </button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== PAGE 6: วางแผนเกษียณ (RETIREMENT) ==================== -->
-      <section class="page-view" id="retirement" aria-labelledby="heading-retirement" hidden>
-        <div class="content-container">
-          <div class="section-header text-center">
-            <div class="pill-badge">🌴 เกษียณอย่างมั่งคั่ง</div>
-            <h2 id="heading-retirement" class="section-title">วางแผนเตรียมเงินสำหรับวัยเกษียณ</h2>
-            <p class="section-desc">
-              ประเมินจำนวนปีที่เหลือก่อนเกษียณ และเงินทุนที่ต้องมีเพื่อให้ใช้ชีวิตหลังเกษียณได้อย่างไร้กังวล
-            </p>
-          </div>
-
-          <div class="retirement-card glass-panel">
-            <form id="retirement-calc-form" class="retire-form" onsubmit="return false;">
-              <div class="retire-grid">
-
-                <div class="form-group">
-                  <label for="retire-current-age">อายุปัจจุบันของคุณ (ปี)</label>
-                  <div class="input-with-affix">
-                    <input type="number" id="retire-current-age" name="retirement_current_age" value="32" min="18"
-                      max="75" class="form-input">
-                    <span class="affix">ปี</span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="retire-target-age">อายุที่ตั้งใจจะเกษียณ (ปี)</label>
-                  <div class="input-with-affix">
-                    <input type="number" id="retire-target-age" name="retirement_target_age" value="60" min="40"
-                      max="85" class="form-input">
-                    <span class="affix">ปี</span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="retire-monthly-expense">คาดว่าจะมีค่าใช้จ่ายหลังเกษียณ (บาท/เดือน)</label>
-                  <div class="input-with-affix">
-                    <input type="number" id="retire-monthly-expense" name="retirement_monthly_expense" value="25000"
-                      min="5000" step="1000" class="form-input">
-                    <span class="affix">บาท/เดือน</span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="retire-current-savings">เงินเก็บสำหรับเกษียณที่มีอยู่แล้ว (บาท)</label>
-                  <div class="input-with-affix">
-                    <input type="number" id="retire-current-savings" name="retirement_current_savings" value="200000"
-                      min="0" step="10000" class="form-input">
-                    <span class="affix">บาท</span>
-                  </div>
-                </div>
-
-              </div>
-
-              <!-- Retirement Outcome Display -->
-              <div class="retire-result-box" id="retirement-result-box">
-                <div class="retire-metric">
-                  <span class="rm-label">ระยะเวลาเตรียมตัวที่เหลือ:</span>
-                  <strong class="rm-val text-gradient" id="retire-res-years-left">28 ปี</strong>
-                  <span class="rm-sub">(ก่อนถึงอายุเกษียณ 60 ปี)</span>
-                </div>
-                <div class="retire-metric">
-                  <span class="rm-label">เงินกองทุนเกษียณที่ต้องเตรียม (อยู่ถึงอายุ 80 ปี):</span>
-                  <strong class="rm-val text-warning" id="retire-res-fund-needed">฿6,000,000</strong>
-                  <span class="rm-sub">(คิดจากค่าใช้จ่าย 25,000 บ./ด. เป็นเวลา 20 ปี)</span>
-                </div>
-                <div class="retire-metric">
-                  <span class="rm-label">ต้องออมเพิ่มเฉลี่ยประมาณ:</span>
-                  <strong class="rm-val text-success" id="retire-res-monthly-target">฿17,262 / เดือน</strong>
-                  <span class="rm-sub">(ยังไม่รวมผลตอบแทนจากการลงทุน)</span>
-                </div>
-              </div>
-
-              <div class="text-center mt-4">
-                <button type="button" class="btn btn-call-bella" id="btn-retire-ask-bella"
-                  aria-label="ปรึกษาน้องเบลล่าเรื่องแผนเกษียณ">
-                  <span>ปรึกษาเบลล่าเพื่อวางแผนเกษียณ</span>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== PAGE 7: คำถามที่พบบ่อย (FAQ) ==================== -->
-      <section class="page-view" id="faq" aria-labelledby="heading-faq" hidden>
-        <div class="content-container">
-          <div class="section-header text-center">
-            <div class="pill-badge">❓ ข้อสงสัยยอดนิยม</div>
-            <h2 id="heading-faq" class="section-title">คำถามที่พบบ่อย (FAQ)</h2>
-            <p class="section-desc">
-              รวบรวมข้อสงสัยเกี่ยวกับสินเชื่อ บัญชีเงินฝาก และขั้นตอนการให้บริการ
-            </p>
-          </div>
-
-          <div class="faq-list">
-
-            <div class="faq-item glass-panel">
-              <button type="button" class="faq-question" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
-                <span>คุณสมบัติเบื้องต้นสำหรับผู้ขอสินเชื่อกู้เงินมีอะไรบ้าง?</span>
-                <span class="faq-chevron" aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
-                <p>ผู้ขอสินเชื่อต้องมีสัญชาติไทย อายุ 20 ปีขึ้นไป (และอายุรวมระยะเวลาผ่อนไม่เกิน 65-70
-                  ปีขึ้นกับประเภทสินเชื่อ) มีรายได้ประจำขั้นต่ำ 15,000 บาท/เดือน มีอายุงานตั้งแต่ 6 เดือนขึ้นไป
-                  และมีประวัติเครดิตบูโรที่ปกติครับ</p>
-              </div>
-            </div>
-
-            <div class="faq-item glass-panel">
-              <button type="button" class="faq-question" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
-                <span>บัญชี Bella e-Savings คิดดอกเบี้ยอย่างไร และเสียภาษีหรือไม่?</span>
-                <span class="faq-chevron" aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
-                <p>Bella e-Savings คำนวณดอกเบี้ยแบบรายวันตามยอดเงินคงเหลือ และจ่ายดอกเบี้ยโอนเข้าบัญชีให้ทุกเดือน
-                  สำหรับดอกเบี้ยรวมทุกบัญชีไม่เกิน 20,000 บาทต่อปี จะได้รับการยกเว้นภาษีตามเกณฑ์ของกรมสรรพากรครับ</p>
-              </div>
-            </div>
-
-            <div class="faq-item glass-panel">
-              <button type="button" class="faq-question" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
-                <span>สามารถกู้ร่วมได้สูงสุดกี่คน และต้องเป็นใครบ้าง?</span>
-                <span class="faq-chevron" aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
-                <p>สำหรับสินเชื่อบ้าน สามารถกู้ร่วมได้สูงสุดถึง 3 คน โดยผู้กู้ร่วมต้องมีความสัมพันธ์ทางสายเลือด เช่น
-                  บิดา มารดา พี่น้อง หรือคู่สมรส (ทั้งที่จดทะเบียนและไม่ได้จดทะเบียน รวมถึงคู่รัก LGBTQ+)
-                  ที่มีรายได้ประจำครับ</p>
-              </div>
-            </div>
-
-            <div class="faq-item glass-panel">
-              <button type="button" class="faq-question" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
-                <span>การตรวจสุขภาพการเงินในเว็บนี้มีความปลอดภัยของข้อมูลหรือไม่?</span>
-                <span class="faq-chevron" aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
-                <p>ปลอดภัยอย่างสมบูรณ์แบบครับ การคำนวณทั้งหมดเป็นการประเมินเบื้องต้นในฝั่งเบราว์เซอร์ของท่าน
-                  ไม่มีการเก็บรหัสผ่าน หมายเลขบัตรเครดิต หรือข้อมูลส่วนตัวที่ระบุตัวตน (PII) ใดๆ ทั้งสิ้นครับ</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-    </main>
-  </div>
-
-  <!-- WebAvatar Widget Settings Modal -->
-  <dialog id="settings-modal" class="settings-modal-dialog" aria-labelledby="modal-settings-title">
-    <div class="modal-box glass-panel">
-      <div class="modal-header">
-        <h3 id="modal-settings-title" class="modal-title">⚙️ ตั้งค่า WebAvatar Widget</h3>
-        <button type="button" class="btn-close-modal" id="btn-close-settings"
-          aria-label="ปิดหน้าต่างตั้งค่า">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p class="modal-desc">
-          กรอก <strong>Widget ID</strong> ของคุณที่ได้จากแพลตฟอร์ม WebAvatar เพื่อเปิดใช้งานน้องเบลล่า 3D Avatar
-          บนหน้าเว็บนี้
-        </p>
-
-        <div class="form-group">
-          <label for="input-widget-id">WebAvatar Widget ID (8 หลัก)</label>
-          <input type="text" id="input-widget-id" class="form-input" placeholder="เช่น vx6pgqf1" maxlength="32">
-          <span class="field-hint">ระบบจะบันทึกใน LocalStorage และโหลดสคริปต์อัตโนมัติ</span>
-        </div>
-
-        <div class="widget-status-card" id="widget-status-card">
-          <div class="status-row">
-            <span class="lbl">สถานะ Widget:</span>
-            <span class="val text-warning" id="modal-widget-status">ยังไม่ได้ตั้งค่า Widget ID</span>
-          </div>
-          <div class="status-row">
-            <span class="lbl">Build Script:</span>
-            <span class="val">Production (chat-widget.js)</span>
-          </div>
-        </div>
-
-        <div class="quick-links-note">
-          <span>ยังไม่มี Widget ID?</span>
-          <a href="https://webavatar-gen-frontend.vercel.app/widget-manage" target="_blank" rel="noopener noreferrer"
-            class="link-external">
-            จัดการ Widget บน WebAvatar Platform &rarr;
-          </a>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline" id="btn-cancel-settings">ยกเลิก</button>
-        <button type="button" class="btn btn-primary" id="btn-save-settings">บันทึก & ใช้งาน</button>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- Floating Toast Notification -->
-  <div id="toast-notification" class="toast-container" role="status" aria-live="polite" hidden>
-    <span class="toast-message" id="toast-message"></span>
-  </div>
-
-  <!-- Application Logic (3-Lead ES Module Entry Point) -->
-  <script type="module" src="app.js?v=7"></script>
-
-  <!-- Inline SPA Navigation & Sidebar Collapse Safeguard (Works even if app.js is cached) -->
-  <script>
-    (function () {
-      function fallbackNavigate(rawId, updateHash) {
-        var cleanId = (rawId || '').replace(/^#/, '').trim();
-        var map = {
-          'deposits': 'deposits',
-          'deposit': 'deposits',
-          'savings': 'deposits',
-          'saving': 'deposits',
-          'savings-simulator-box': 'deposits',
-          'saving-plan': 'deposits',
-          'deposit-esavings': 'deposits',
-          'deposit-taxfree': 'deposits',
-          'deposit-stepup': 'deposits',
-          'retirement': 'retirement',
-          'retire': 'retirement',
-          'quiz': 'quiz',
-          'health': 'quiz',
-          'health-check': 'quiz',
-          'loans': 'loans',
-          'loan': 'loans',
-          'investment': 'loans',
-          'calculator': 'calculator',
-          'faq': 'faq',
-          'welcome': 'welcome'
-        };
-        var targetPage = map[cleanId] || cleanId || 'welcome';
-        var targetSection = document.getElementById(targetPage);
-        if (!targetSection || !targetSection.classList.contains('page-view')) {
-          targetPage = 'welcome';
-        }
-
-        document.querySelectorAll('.page-view').forEach(function (sec) {
-          var isActive = sec.id === targetPage;
-          sec.classList.toggle('active', isActive);
-          if (isActive) {
-            sec.removeAttribute('hidden');
-            sec.hidden = false;
-          } else {
-            sec.setAttribute('hidden', '');
-            sec.hidden = true;
-          }
-        });
-
-        document.querySelectorAll('.sidebar-nav .nav-item').forEach(function (link) {
-          var linkPage = link.getAttribute('data-page') || (link.getAttribute('href') || '').replace(/^#/, '');
-          var isMatch = linkPage === targetPage;
-          link.classList.toggle('active', isMatch);
-          if (isMatch) {
-            link.setAttribute('aria-current', 'page');
-          } else {
-            link.removeAttribute('aria-current');
-          }
-        });
-
-        if (updateHash && window.location.hash !== '#' + targetPage) {
-          history.pushState({ page: targetPage }, '', '#' + targetPage);
-        }
-      }
-
-      // Ensure every [data-page] and sidebar nav item switches pages on click
-      document.addEventListener('click', function (e) {
-        var link = e.target.closest('[data-page], .sidebar-nav .nav-item');
-        if (link) {
-          var page = link.getAttribute('data-page') || (link.getAttribute('href') || '').replace(/^#/, '');
-          if (page) {
-            e.preventDefault();
-            if (typeof window.navigateToPage === 'function') {
-              window.navigateToPage(page, true);
-            } else {
-              fallbackNavigate(page, true);
-            }
-          }
-        }
-      }, true);
-
-      window.addEventListener('hashchange', function () {
-        var h = window.location.hash.replace(/^#/, '');
-        if (h) fallbackNavigate(h, false);
-      });
-
-      var sidebar = document.getElementById('app-sidebar');
-      var collapseBtn = document.getElementById('btn-sidebar-collapse');
-      if (sidebar && collapseBtn && !collapseBtn.dataset.boundCollapse) {
-        collapseBtn.dataset.boundCollapse = 'true';
-        collapseBtn.addEventListener('click', function (e) {
-          e.preventDefault();
-          var isCollapsed = sidebar.classList.toggle('collapsed');
-          collapseBtn.setAttribute('aria-expanded', String(!isCollapsed));
-        });
-      }
-
-      if (window.location.hash) {
-        fallbackNavigate(window.location.hash, false);
-      }
-    })();
-  </script>
-
-  <!-- WebAvatar Widget Loader (Production Build) -->
-  <script>
-    (function () {
-      var savedId = localStorage.getItem('bella_webavatar_widget_id');
-      if (savedId) {
-        window.ChatWidgetConfig = {
-          widgetId: savedId
-        };
-        if (!document.getElementById('webavatar-jssdk')) {
-          var script = document.createElement('script');
-          script.id = 'webavatar-jssdk';
-          script.src = 'https://webavatar.didthat.cc/chat-widget.js';
-          script.async = true;
-          (document.head || document.body).appendChild(script);
-        }
-      }
-    })();
-  </script>
-</body>
-
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bella Digital Bank - ธนาคารดิจิทัลและที่ปรึกษาการเงินอัจฉริยะ</title>
+  <meta name="description"
+    content="วางแผนการเงิน เปรียบเทียบสินเชื่อ กู้เงิน บัญชีเงินฝากดอกเบี้ยสูง และตรวจสุขภาพการเงิน พร้อมผู้ช่วย AI เสมือนจริง น้องเบลล่า">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=8">
+</head>
+
+<body>
+  <div class="app-layout">
+
+    <!-- ==================== LEFT SIDEBAR ==================== -->
+    <aside class="sidebar" id="app-sidebar" aria-label="แถบเมนูหลัก">
+      <!-- Brand Header -->
+      <div class="sidebar-brand">
+        <a href="#welcome" class="brand-link" data-page="welcome" aria-label="เบลล่าแบงก์ หน้าแรก" title="Bella Bank">
+          <div class="brand-logo-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor" />
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="brand-titles">
+            <span class="brand-name">Bella Bank</span>
+            <span class="brand-tagline">AI Wealth</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation List -->
+      <nav class="sidebar-nav" aria-label="เมนูหลัก">
+        <ul class="nav-list">
+          <li>
+            <a href="#welcome" class="nav-item active" data-page="welcome" aria-current="page"
+              title="หน้าแรก (ต้อนรับ)">
+              <span class="nav-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1V9.5z" />
+                </svg>
+              </span>
+              <span class="nav-label">หน้าแรก</span>
+            </a>
+          </li>
+          <li>
+            <a href="#quiz" class="nav-item" data-page="quiz" title="ประเมินสุขภาพการเงิน">
+              <span class="nav-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                  <polyline points="7 12 10 12 11.5 9.5 13.5 14.5 15 12 17 12" />
+                </svg>
+              </span>
+              <span class="nav-label">ประเมินสุขภาพการเงิน</span>
+            </a>
+          </li>
+          <li>
+            <a href="#loans" class="nav-item" data-page="loans" title="วางแผนการลงทุน">
+              <span class="nav-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                  <polyline points="17 6 23 6 23 12" />
+                </svg>
+              </span>
+              <span class="nav-label">วางแผนการลงทุน</span>
+            </a>
+          </li>
+          <li>
+            <a href="#deposits" class="nav-item" data-page="deposits" title="วางแผนการออม & บัญชีเงินฝาก" id="nav-link-deposits">
+              <span class="nav-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M19 11c0-3.87-3.58-7-8-7-3.95 0-7.23 2.5-7.88 5.8-.62.32-1.12.9-1.12 1.7 0 .95.67 1.73 1.56 1.93.45 1.48 1.48 1.74 2.84 3.57L6 20h3l.5-2h3l.5 2h3l-.4-2.85c1.82-.98 3.08-2.66 3.33-4.65H21v-2h-2z" />
+                  <path d="M10 8h3" />
+                  <circle cx="7.5" cy="10.5" r="0.8" fill="currentColor" />
+                </svg>
+              </span>
+              <span class="nav-label">วางแผนการออม & เงินฝาก</span>
+            </a>
+          </li>
+          <li>
+            <a href="#calculator" class="nav-item" data-page="calculator" title="คำนวณค่างวดและแผนการผ่อนชำระ" id="nav-link-calculator">
+              <span class="nav-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="2" width="16" height="20" rx="2" />
+                  <line x1="8" y1="6" x2="16" y2="6" />
+                  <line x1="8" y1="11" x2="10" y2="11" />
+                  <line x1="14" y1="11" x2="16" y2="11" />
+                  <line x1="8" y1="15" x2="10" y2="15" />
+                  <line x1="14" y1="15" x2="16" y2="15" />
+                </svg>
+              </span>
+              <span class="nav-label">คำนวณค่างวด & ผ่อนชำระ</span>
+            </a>
+          </li>
+          <li>
+            <a href="#retirement" class="nav-item" data-page="retirement" title="วางแผนเกษียณ">
+              <span class="nav-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 21V11" />
+                  <path d="M12 11C12 7.5 8.5 5 5 6c1.5 2.5 4.5 3.5 7 5z" />
+                  <path d="M12 11c0-3.5 3.5-6 7-5-1.5 2.5-4.5 3.5-7 5z" />
+                  <path d="M12 11c-2.5-2-6.5-1.5-8 1.5 3 0 5.5 0 8-1.5z" />
+                  <path d="M12 11c2.5-2 6.5-1.5 8 1.5-3 0-5.5 0-8-1.5z" />
+                  <path d="M8 21h8" />
+                </svg>
+              </span>
+              <span class="nav-label">วางแผนเกษียณ</span>
+            </a>
+          </li>
+          <li>
+            <a href="#faq" class="nav-item" data-page="faq" title="คำถามที่พบบ่อย">
+              <span class="nav-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+              </span>
+              <span class="nav-label">คำถามที่พบบ่อย</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Bottom Collapse Action -->
+      <div class="sidebar-bottom-actions">
+        <button type="button" class="nav-item sidebar-collapse-btn" id="btn-sidebar-collapse"
+          aria-label="ย่อหรือขยายแถบเมนูด้านซ้าย" aria-expanded="true" aria-controls="app-sidebar"
+          title="Collapse / Expand">
+          <span class="nav-icon" aria-hidden="true">
+            <svg class="collapse-chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </span>
+          <span class="nav-label">Collapse</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT AREA ==================== -->
+    <main class="main-canvas" id="main-content">
+
+      <!-- Top Header Action Controls (Call Bella & Settings Modal Trigger) -->
+      <header class="canvas-topbar">
+        <button type="button" class="btn-mobile-menu" id="btn-mobile-menu" aria-label="เปิดเมนูนำทาง"
+          aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="header-actions">
+          <!-- Call Bella Button -->
+          <button type="button" class="btn btn-call-bella" id="btn-call-bella"
+            aria-label="เริ่มคุยด้วยเสียงกับน้องเบลล่า AI">
+            <span class="pulse-dot" id="call-status-indicator" aria-hidden="true"></span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+              <line x1="12" y1="19" x2="12" y2="23" />
+              <line x1="8" y1="23" x2="16" y2="23" />
+            </svg>
+            <span id="call-btn-text">คุยเสียงกับเบลล่า</span>
+          </button>
+
+          <!-- Widget Settings Toggle Button -->
+          <button type="button" class="btn btn-icon-glass" id="btn-open-settings"
+            aria-label="ตั้งค่าการเชื่อมต่อ WebAvatar Widget">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0-2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- ==================== PAGE 1: หน้าแรก (HERO / WELCOME) ==================== -->
+      <section class="page-view active" id="welcome" aria-labelledby="heading-welcome">
+        <div class="content-container hero-grid">
+          <div class="hero-content">
+            <div class="pill-badge">
+              <span class="pill-sparkle">✨</span> นวัตกรรมธนาคารดิจิทัลแห่งอนาคต
+            </div>
+            <h1 id="heading-welcome" class="hero-title">
+              วางแผนการเงิน สินเชื่อ & เงินฝาก <span class="text-gradient">ด้วย AI เบลล่า</span>
+            </h1>
+            <p class="hero-subtitle">
+              ค้นหาผลิตภัณฑ์สินเชื่อดอกเบี้ยต่ำ หรือบัญชีเงินฝากผลตอบแทนสูงที่เหมาะกับคุณที่สุด
+              พร้อมประเมินสุขภาพการเงินและรับคำปรึกษาผ่าน 3D Voice Avatar เสมือนจริง
+            </p>
+            <div class="hero-cta-group">
+              <a href="#quiz" class="btn btn-primary" data-page="quiz"
+                aria-label="เริ่มทำแบบประเมินค้นหาผลิตภัณฑ์การเงิน">
+                <span>เริ่มทำแบบประเมินการเงิน (Quiz)</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="#loans" class="btn btn-outline" data-page="loans" aria-label="วางแผนการลงทุนและสินเชื่อ">
+                วางแผนการลงทุน & สินเชื่อ
+              </a>
+            </div>
+
+            <!-- Feature Highlights Stat Bar -->
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-number">2.20%</span>
+                <span class="stat-label">ดอกเบี้ยเงินฝาก e-Savings</span>
+              </div>
+              <div class="stat-divider" aria-hidden="true"></div>
+              <div class="stat-item">
+                <span class="stat-number">3.25%</span>
+                <span class="stat-label">สินเชื่อบ้านดอกเบี้ยพิเศษ</span>
+              </div>
+              <div class="stat-divider" aria-hidden="true"></div>
+              <div class="stat-item">
+                <span class="stat-number">5 นาที</span>
+                <span class="stat-label">รู้ผลประเมินวงเงินเบื้องต้น</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Interactive Preview Card -->
+          <div class="hero-visual">
+            <div class="assistant-card glass-panel">
+              <div class="assistant-header">
+                <div class="assistant-avatar-badge">
+                  <div class="avatar-ring">
+                    <span class="avatar-emoji" role="img" aria-label="รูปแทนผู้ช่วยเบลล่า">👩🏻‍💼</span>
+                  </div>
+                  <div class="assistant-status">
+                    <strong>น้องเบลล่า (Bella)</strong>
+                    <span class="status-indicator">
+                      <span class="status-dot"></span> พร้อมให้คำปรึกษาตลอด 24 ชม.
+                    </span>
+                  </div>
+                </div>
+                <div class="widget-sync-tag" id="widget-sync-tag">
+                  <span class="tag-dot"></span> WebAvatar Synced
+                </div>
+              </div>
+
+              <div class="assistant-bubble">
+                <p>
+                  "สวัสดีค่ะคุณลูกค้า เบลล่าพร้อมช่วยแนะนำสินเชื่อเงินกู้ บัญชีเงินฝาก วางแผนการลงทุน
+                  หรือตรวจสุขภาพการเงินเบื้องต้นให้ทันทีค่ะ สามารถพูดคุยด้วยเสียง
+                  หรือคลิกเลือกบริการด้านล่างได้เลยนะคะ!"
+                </p>
+              </div>
+
+              <div class="quick-service-tiles">
+                <a href="#loans" class="service-tile" data-page="loans" aria-label="วางแผนการลงทุนและสินเชื่อ">
+                  <div class="tile-icon">📈</div>
+                  <div class="tile-info">
+                    <strong>วางแผนการลงทุน</strong>
+                    <span>กองทุนรวม & สินเชื่อ</span>
+                  </div>
+                </a>
+                <a href="#deposits" class="service-tile" data-page="deposits" aria-label="วางแผนการออมและบัญชีเงินฝาก" id="tile-savings-plan">
+                  <div class="tile-icon">🎯</div>
+                  <div class="tile-info">
+                    <strong>วางแผนการออม</strong>
+                    <span>เป้าหมายเงินออม & เงินฝาก</span>
+                  </div>
+                </a>
+                <a href="#quiz" class="service-tile" data-page="quiz" aria-label="ตรวจสุขภาพการเงิน">
+                  <div class="tile-icon">🩺</div>
+                  <div class="tile-info">
+                    <strong>ตรวจสุขภาพการเงิน</strong>
+                    <span>คำนวณหนี้ & สภาพคล่อง</span>
+                  </div>
+                </a>
+                <a href="#retirement" class="service-tile" data-page="retirement" aria-label="วางแผนเกษียณ">
+                  <div class="tile-icon">🏖️</div>
+                  <div class="tile-info">
+                    <strong>วางแผนวัยเกษียณ</strong>
+                    <span>คำนวณเงินก้อนที่ต้องมี</span>
+                  </div>
+                </a>
+                <a href="#calculator" class="service-tile" data-page="calculator" aria-label="คำนวณค่างวดและแผนการผ่อนชำระ" id="tile-calc-loan">
+                  <div class="tile-icon">🧮</div>
+                  <div class="tile-info">
+                    <strong>คำนวณค่างวด</strong>
+                    <span>แผนการผ่อนชำระเงินกู้</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== PAGE 2: ประเมินสุขภาพการเงิน (QUIZ - คนที่ 3) ==================== -->
+      <section class="page-view" id="quiz" aria-labelledby="heading-quiz" hidden>
+        <div class="content-container">
+          <div class="section-header text-center">
+            <div class="pill-badge">🩺 ตรวจสุขภาพการเงินเบื้องต้น</div>
+            <h2 id="heading-quiz" class="section-title">ประเมินสุขภาพการเงินเบื้องต้น</h2>
+            <p class="section-desc">
+              ตรวจสอบสภาพคล่องรายเดือน สัดส่วนภาระหนี้สิน (DSR) และระยะเวลาเงินสำรองฉุกเฉิน
+              เพื่อดูภาพรวมสถานะทางการเงินของคุณ
+            </p>
+          </div>
+
+          <div class="quiz-wrapper glass-panel">
+            <!-- Quiz Stepper Progress Header (3 Steps: รายรับ-รายจ่าย -> หนี้ & เงินสำรอง -> ผลการวิเคราะห์) -->
+            <div class="quiz-progress-bar" id="quiz-progressbar" role="progressbar" aria-valuenow="1" aria-valuemin="1"
+              aria-valuemax="3" aria-label="ขั้นตอนแบบประเมินสุขภาพการเงิน">
+              <div class="step-node active" id="step-node-1" aria-current="step">
+                <span class="step-num">1</span>
+                <span class="step-text">รายรับ-รายจ่าย</span>
+              </div>
+              <div class="step-line" aria-hidden="true"></div>
+              <div class="step-node" id="step-node-2">
+                <span class="step-num">2</span>
+                <span class="step-text">หนี้ & เงินสำรอง</span>
+              </div>
+              <div class="step-line" aria-hidden="true"></div>
+              <div class="step-node" id="step-node-3">
+                <span class="step-num">3</span>
+                <span class="step-text">ผลการวิเคราะห์</span>
+              </div>
+            </div>
+
+            <!-- Quiz Form Steps -->
+            <form id="financial-quiz-form" onsubmit="return false;">
+
+              <!-- Step 1: Income & Expense -->
+              <div class="quiz-step active" id="quiz-step-1">
+                <h3 class="step-question">ข้อมูลรายรับและรายจ่ายเฉลี่ยต่อเดือน</h3>
+                <p class="step-helper">สามารถบอกตัวเลขให้น้องเบลล่ากรอกให้ด้วยเสียง หรือพิมพ์ตัวเลขด้านล่างได้เลยค่ะ</p>
+
+                <div class="form-inputs-grid">
+                  <div class="form-group">
+                    <label for="quiz-income">รายรับเฉลี่ยต่อเดือน (บาท) <span class="required">*</span></label>
+                    <div class="input-with-affix">
+                      <input type="number" id="quiz-income" name="financial_monthly_income" placeholder="เช่น 45000"
+                        min="1000" step="500" required>
+                      <span class="affix">บาท/เดือน</span>
+                    </div>
+                    <span class="field-hint">รวมเงินเดือน โบนัสเฉลี่ย หรือรายได้เสริม (ต้องมากกว่า 0 บาท)</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="quiz-expense">รายจ่ายจำเป็นเฉลี่ยต่อเดือน (บาท) <span class="required">*</span></label>
+                    <div class="input-with-affix">
+                      <input type="number" id="quiz-expense" name="financial_monthly_expense" placeholder="เช่น 20000"
+                        min="0" step="500" required>
+                      <span class="affix">บาท/เดือน</span>
+                    </div>
+                    <span class="field-hint">ค่ากินอยู่ ค่าน้ำไฟ ค่าเดินทาง (ยังไม่รวมผ่อนหนี้)</span>
+                  </div>
+                </div>
+
+                <div class="step-actions">
+                  <div></div>
+                  <button type="button" class="btn btn-primary" id="btn-quiz-next-1"
+                    aria-label="ไปขั้นตอนถัดไป ภาระหนี้และเงินสำรอง">
+                    ถัดไป (หนี้สินและเงินสำรอง) &rarr;
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 2: Debt & Emergency Savings -->
+              <div class="quiz-step" id="quiz-step-2" hidden>
+                <h3 class="step-question">ภาระผ่อนชำระหนี้สินและเงินออมสำรอง</h3>
+                <p class="step-helper">วิเคราะห์สัดส่วนภาระหนี้ต่อรายได้ (DSR)
+                  และจำนวนเดือนที่เงินสำรองฉุกเฉินรองรับค่าใช้จ่าย</p>
+
+                <div class="form-inputs-grid">
+                  <div class="form-group">
+                    <label for="quiz-debt">ภาระผ่อนหนี้สินต่อเดือนปัจจุบัน (บาท)</label>
+                    <div class="input-with-affix">
+                      <input type="number" id="quiz-debt" name="financial_monthly_debt_payment"
+                        placeholder="เช่น 5000 (ถ้าไม่มีให้กรอก 0)" min="0" step="500" required>
+                      <span class="affix">บาท/เดือน</span>
+                    </div>
+                    <span class="field-hint">รวมผ่อนบ้าน รถ บัตรเครดิต หรือสินเชื่ออื่นๆ</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="quiz-savings">เงินออมสำรองพร้อมใช้ในปัจจุบัน (บาท)</label>
+                    <div class="input-with-affix">
+                      <input type="number" id="quiz-savings" name="financial_current_savings" placeholder="เช่น 120000"
+                        min="0" step="1000" required>
+                      <span class="affix">บาท</span>
+                    </div>
+                    <span class="field-hint">เงินฝากออมทรัพย์ หรือกองทุนตลาดเงินที่ถอนได้ทันที</span>
+                  </div>
+                </div>
+
+                <div class="step-actions">
+                  <button type="button" class="btn btn-outline" id="btn-quiz-prev-2"
+                    aria-label="ย้อนกลับขั้นตอนก่อนหน้า">
+                    &larr; ย้อนกลับ
+                  </button>
+                  <button type="button" class="btn btn-primary" id="btn-quiz-calculate"
+                    aria-label="คำนวณและประมวลผลสุขภาพการเงิน">
+                    ประมวลผลสุขภาพการเงิน &rarr;
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 3: Results & Matched Banking Products -->
+              <div class="quiz-step" id="quiz-step-3" hidden>
+                <div class="quiz-result-container">
+                  <div class="result-badge-wrap">
+                    <div class="health-level-badge" id="result-health-badge">
+                      <span class="health-icon" id="result-health-icon">🌟</span>
+                      <div class="health-title-group">
+                        <span class="sub-caption">ระดับสุขภาพการเงินของคุณ:</span>
+                        <h4 class="health-status-name" id="result-health-title">สุขภาพการเงินดีเยี่ยม (Good)</h4>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Financial Health Metrics Grid -->
+                  <div class="health-metrics-grid">
+                    <div class="metric-card">
+                      <span class="metric-label">เงินคงเหลือสุทธิ/เดือน</span>
+                      <strong class="metric-val" id="result-surplus-amount">฿20,000</strong>
+                      <span class="metric-sub" id="result-surplus-ratio">คิดเป็น 44.4% ของรายรับ</span>
+                    </div>
+                    <div class="metric-card">
+                      <span class="metric-label">ภาระหนี้สิน (DSR)</span>
+                      <strong class="metric-val" id="result-debt-ratio">11.1%</strong>
+                      <span class="metric-sub" id="result-debt-status">เกณฑ์ปลอดภัย (&le; 35%)</span>
+                    </div>
+                    <div class="metric-card">
+                      <span class="metric-label">เงินสำรองฉุกเฉิน</span>
+                      <strong class="metric-val" id="result-emergency-months">6.0 เดือน</strong>
+                      <span class="metric-sub" id="result-emergency-status">สำรองฉุกเฉินเพียงพอ (&ge; 6 เดือน)</span>
+                    </div>
+                  </div>
+
+                  <!-- AI Advice Box -->
+                  <div class="ai-advice-box">
+                    <div class="advice-header">
+                      <span class="bell-icon">💡</span>
+                      <strong>คำแนะนำเบื้องต้นจากน้องเบลล่า:</strong>
+                    </div>
+                    <p id="result-ai-advice-text">
+                      วิเคราะห์ผลสุขภาพการเงินเบื้องต้น พร้อมแนะนำผลิตภัณฑ์ที่เหมาะสม
+                    </p>
+                  </div>
+
+                  <!-- Matched Recommended Products -->
+                  <div class="recommended-products-section">
+                    <h4 class="rec-title">✨ ผลิตภัณฑ์และบริการที่เหมาะสมกับสถานะการเงินของคุณ</h4>
+                    <div class="rec-cards-grid" id="recommended-products-container">
+                      <!-- Populated dynamically via JS -->
+                    </div>
+                  </div>
+
+                  <!-- Reset Action -->
+                  <div class="result-sync-actions">
+                    <button type="button" class="btn btn-outline" id="btn-quiz-reset"
+                      aria-label="เริ่มทำแบบประเมินใหม่อีกครั้ง">
+                      &larr; แก้ไขตัวเลข / ประเมินใหม่อีกครั้ง
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== PAGE 3: วางแผนการลงทุน & สินเชื่อ (INVESTMENT & LOANS - คนที่ 3) ==================== -->
+      <section class="page-view" id="loans" aria-labelledby="heading-loans" hidden>
+        <div class="content-container" id="investment">
+          <div class="section-header">
+            <div class="pill-badge">📈 วางแผนการลงทุน & สินเชื่อ</div>
+            <h2 id="heading-loans" class="section-title">วางแผนการลงทุน & กองทุนรวมแนะนำ</h2>
+            <p class="section-desc">
+              ศึกษาความรู้พื้นฐานการลงทุน ค้นหาตัวอย่างกองทุนรวมตามระดับความเสี่ยง และนัดหมายที่ปรึกษาทางการเงินผู้เชี่ยวชาญ
+            </p>
+          </div>
+
+          <!-- ข้อควรรู้ด้านการลงทุน -->
+          <div class="ai-advice-box p3-compliance-banner" role="note" aria-label="ข้อควรรู้ด้านการลงทุน">
+            <div class="advice-header">
+              <span class="bell-icon">🛡️</span>
+              <strong>ข้อควรรู้ก่อนตัดสินใจลงทุน:</strong>
+            </div>
+            <p>
+              การลงทุนมีความเสี่ยง ผู้ลงทุนควรศึกษาข้อมูลนโยบายกองทุนและทำความเข้าใจลักษณะสินค้า เงื่อนไขผลตอบแทน และความเสี่ยงก่อนตัดสินใจลงทุน ทั้งนี้ ผลการดำเนินงานในอดีตมิได้เป็นสิ่งยืนยันถึงผลการดำเนินงานในอนาคต
+            </p>
+          </div>
+
+          <!-- ==================== หมวดที่ 1: เรื่องน่ารู้การลงทุน ==================== -->
+          <div class="savings-simulator-card glass-panel p3-invest-block" id="investment-knowledge-section">
+            <div class="sim-header">
+              <div class="sim-badge">📚 เรื่องน่ารู้การลงทุน</div>
+              <h3 class="sim-title">คลังความรู้พื้นฐานสำหรับการเริ่มต้นลงทุนอย่างมั่นใจ</h3>
+            </div>
+
+            <div class="p3-knowledge-tabs" role="tablist" aria-label="หัวข้อเรื่องน่ารู้การลงทุน">
+              <button type="button" class="p3-knowledge-tab active" data-knowledge-key="start" role="tab"
+                aria-selected="true">
+                <span class="p3-kt-icon">🌱</span>
+                <div class="p3-kt-info">
+                  <strong>วิธีเริ่มลงทุนสำหรับมือใหม่</strong>
+                  <span>การเตรียมเงินสำรอง & ขั้นตอนเริ่มต้น</span>
+                </div>
+              </button>
+
+              <button type="button" class="p3-knowledge-tab" data-knowledge-key="risk" role="tab" aria-selected="false">
+                <span class="p3-kt-icon">⚖️</span>
+                <div class="p3-kt-info">
+                  <strong>ความเสี่ยงคืออะไร?</strong>
+                  <span>ระดับความเสี่ยง 1–8 & ผลตอบแทน</span>
+                </div>
+              </button>
+
+              <button type="button" class="p3-knowledge-tab" data-knowledge-key="dca" role="tab" aria-selected="false">
+                <span class="p3-kt-icon">🗓️</span>
+                <div class="p3-kt-info">
+                  <strong>DCA คืออะไร?</strong>
+                  <span>ทยอยลงทุนสม่ำเสมอ ถัวเฉลี่ยต้นทุน</span>
+                </div>
+              </button>
+
+              <button type="button" class="p3-knowledge-tab" data-knowledge-key="portfolio" role="tab"
+                aria-selected="false">
+                <span class="p3-kt-icon">🧭</span>
+                <div class="p3-kt-info">
+                  <strong>การจัดพอร์ต & Rebalancing</strong>
+                  <span>กระจายสินทรัพย์ & ปรับสมดุลพอร์ต</span>
+                </div>
+              </button>
+            </div>
+
+            <!-- กล่องแสดงรายละเอียดความรู้ -->
+            <div class="p3-knowledge-viewer" id="investment-knowledge-viewer" aria-live="polite">
+              <div class="p3-kv-header">
+                <div>
+                  <h4 id="kd-title" class="p3-kv-title">เริ่มต้นลงทุนอย่างไรดีสำหรับมือใหม่?</h4>
+                </div>
+                <button type="button" class="btn btn-outline" id="btn-ask-bella-knowledge"
+                  style="padding: 8px 16px; font-size: 0.85rem;">
+                  🎙️ ให้น้องเบลล่าอธิบายหัวข้อนี้
+                </button>
+              </div>
+              <p id="kd-body" class="p3-kv-body">
+                ก่อนเริ่มลงทุน ควรสำรวจสุขภาพการเงินและกันเงินสำรองฉุกเฉินอย่างน้อย 3–6
+                เท่าของค่าใช้จ่ายรายเดือนไว้ในสินทรัพย์สภาพคล่องสูง จากนั้นจึงกำหนดเป้าหมายการลงทุน
+                ทำแบบประเมินความเสี่ยง (Suitability Test) และเลือกลงทุนในสินทรัพย์ที่เข้าใจนโยบายอย่างชัดเจน
+              </p>
+              <ul id="kd-highlights" class="product-perks p3-kv-perks">
+                <li>กันเงินสำรองฉุกเฉิน 3–6 เดือนของค่าใช้จ่ายจำเป็นก่อนเริ่มลงทุน</li>
+                <li>กำหนดเป้าหมายและระยะเวลาการลงทุนให้ชัดเจน</li>
+                <li>ทำแบบประเมินความเสี่ยง (Suitability Test) เพื่อทราบระดับความเสี่ยงที่ยอมรับได้</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- ==================== หมวดที่ 2: ตัวอย่างกองทุนแนะนำ ==================== -->
+          <div class="savings-simulator-card glass-panel p3-invest-block" id="investment-funds-section">
+            <div class="sim-header">
+              <div class="sim-badge">📊 ตัวอย่างกองทุนแนะนำ</div>
+              <h3 class="sim-title">ค้นหาและกรองตัวอย่างกองทุนรวมตามระดับความเสี่ยง</h3>
+            </div>
+
+            <!-- ฟอร์มค้นหาและกรองกองทุน -->
+            <form id="investment-fund-search-form" class="p3-fund-search-bar" onsubmit="return false;">
+              <div class="form-group" style="flex: 1; min-width: 240px; margin: 0;">
+                <label for="investment-fund-search-input">ค้นหาชื่อกองทุน หรือนโยบายการลงทุน</label>
+                <input type="text" id="investment-fund-search-input" name="investment_question" class="form-input"
+                  placeholder="เช่น BELLA-MMF, BELLA-SET50, ตราสารหนี้, หุ้นโลก">
+              </div>
+              <div class="form-group" style="min-width: 220px; margin: 0;">
+                <label for="investment-risk-filter">กรองตามระดับความเสี่ยง</label>
+                <select id="investment-risk-filter" class="form-select">
+                  <option value="all">ทุกระดับความเสี่ยง (ทั้งหมด)</option>
+                  <option value="low">ความเสี่ยงต่ำ (ระดับ 1–4)</option>
+                  <option value="medium">ความเสี่ยงปานกลาง (ระดับ 5)</option>
+                  <option value="high">ความเสี่ยงสูง (ระดับ 6–8)</option>
+                </select>
+              </div>
+              <div class="p3-fund-search-actions">
+                <button type="submit" class="btn btn-primary" id="btn-investment-fund-search">
+                  ค้นหากองทุน
+                </button>
+                <button type="button" class="btn btn-outline" id="btn-investment-fund-reset">
+                  ล้างค่า
+                </button>
+              </div>
+            </form>
+
+            <!-- กล่องแสดงข้อความเมื่อไม่พบชื่อกองทุน -->
+            <div class="p3-unverified-alert" id="investment-unverified-alert" role="alert" hidden>
+              <div class="p3-ua-main">
+                <span class="p3-ua-icon" aria-hidden="true">⚠️</span>
+                <div>
+                  <strong>ไม่พบข้อมูลกองทุนที่ค้นหา</strong>
+                  <p id="investment-unverified-message">
+                    "ขออภัยค่ะ ตอนนี้เบลล่ายังไม่มีรายละเอียดกองทุนที่สามารถยืนยันได้
+                    คุณลูกค้าสนใจนัดหมายที่ปรึกษาทางการเงินเพิ่มเติมไหมคะ?"
+                  </p>
+                </div>
+              </div>
+              <button type="button" class="btn btn-call-bella" id="btn-unverified-book-advisor">
+                <span>นัดหมายที่ปรึกษาทางการเงิน</span>
+              </button>
+            </div>
+
+            <!-- การ์ดตัวอย่างกองทุน -->
+            <div class="products-grid" id="investment-funds-grid">
+              <!-- Populated dynamically via person3-financial-engine.js -->
+            </div>
+          </div>
+
+          <!-- ==================== หมวดที่ 3: ปรึกษาที่ปรึกษาการเงิน ==================== -->
+          <div class="savings-simulator-card glass-panel p3-invest-block" id="investment-advisor-section">
+            <div class="sim-result-banner">
+              <div class="res-stat" style="flex: 1; min-width: 260px;">
+                <span class="sim-badge" style="align-self: flex-start;">👩🏻‍💼 ปรึกษาผู้เชี่ยวชาญ</span>
+                <h3 class="sim-title" style="margin-top: 4px;">นัดหมายพูดคุยกับที่ปรึกษาทางการเงิน</h3>
+                <p class="sim-desc">
+                  หากคุณลูกค้าต้องการทำแบบประเมินความเสี่ยง (Suitability Test) หรือรับคำแนะนำจัดพอร์ตเฉพาะบุคคล
+                  สามารถกดปุ่มเพื่อนัดหมายหรือให้เบลล่าติดต่อเจ้าหน้าที่ผู้เชี่ยวชาญได้ทันทีค่ะ
+                </p>
+                <div class="p3-advisor-status" id="investment-advisor-status" hidden>
+                  ✅ <span id="investment-advisor-status-text">บันทึกความสนใจนัดหมายที่ปรึกษาทางการเงินเรียบร้อยแล้วค่ะ</span>
+                </div>
+              </div>
+              <div class="res-action">
+                <button type="button" class="btn btn-call-bella" id="btn-request-advisor"
+                  aria-label="นัดหมายที่ปรึกษาทางการเงิน">
+                  <span>นัดหมายที่ปรึกษาทางการเงิน</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== ส่วนประเภทสินเชื่อและเงินกู้ ==================== -->
+          <div class="section-header" style="margin-top: 56px;">
+            <div class="pill-badge">💳 ประเภทสินเชื่อและการกู้เงิน</div>
+            <h3 class="section-title" style="font-size: 1.65rem;">ผลิตภัณฑ์สินเชื่อดอกเบี้ยพิเศษ</h3>
+            <p class="section-desc">
+              เลือกประเภทสินเชื่อที่สนใจเพื่อส่งค่าไปคำนวณค่างวดต่อเดือนในหน้าเครื่องคำนวณค่างวดได้ทันที
+            </p>
+          </div>
+
+          <div class="products-grid">
+
+            <!-- Product 1: Home Loan -->
+            <article class="product-card glass-panel" id="product-home-loan">
+              <div class="product-tag popular-tag">ยอดนิยม</div>
+              <div class="product-icon-wrap">🏡</div>
+              <h3 class="product-name">สินเชื่อบ้านใหม่ & รีไฟแนนซ์</h3>
+              <p class="product-summary">สานฝันมีบ้านหรือคอนโดเป็นของตนเอง ผ่อนสบาย วงเงินกู้สูงสุด 100% ของราคาประเมิน
+              </p>
+              <div class="product-highlights">
+                <div class="highlight-item">
+                  <span class="hl-label">ดอกเบี้ยเริ่มต้น</span>
+                  <span class="hl-value text-gradient">3.25% ต่อปี</span>
+                  <span class="hl-note">(เฉลี่ย 3 ปีแรก)</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="hl-label">ผ่อนนานสูงสุด</span>
+                  <span class="hl-value">40 ปี</span>
+                  <span class="hl-note">อายุผู้กู้รวมไม่เกิน 70 ปี</span>
+                </div>
+              </div>
+              <ul class="product-perks">
+                <li>ฟรีค่าธรรมเนียมประเมินราคาหลักประกัน</li>
+                <li>ผ่อนค่างวดแบบขั้นบันได สบายกระเป๋า</li>
+                <li>กู้ร่วมได้สูงสุด 3 คน</li>
+              </ul>
+              <div class="product-card-actions">
+                <button type="button" class="btn btn-primary btn-calc-loan" data-loan-type="home"
+                  aria-label="คำนวณค่างวดสินเชื่อบ้าน">
+                  คำนวณค่างวดบ้าน
+                </button>
+                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="สินเชื่อบ้าน"
+                  aria-label="สอบถามเบลล่าเรื่องสินเชื่อบ้าน">
+                  ถามเบลล่า
+                </button>
+              </div>
+            </article>
+
+            <!-- Product 2: Auto Loan -->
+            <article class="product-card glass-panel" id="product-auto-loan">
+              <div class="product-icon-wrap">🚗</div>
+              <h3 class="product-name">สินเชื่อรถยนต์ & รถแลกเงิน</h3>
+              <p class="product-summary">ออกรถใหม่ รถมือสอง หรือเปลี่ยนรถคู่ใจเป็นเงินสด วงเงินสูงสุด 100%
+                ดอกเบี้ยคงที่สบายใจ</p>
+              <div class="product-highlights">
+                <div class="highlight-item">
+                  <span class="hl-label">ดอกเบี้ยเริ่มต้น</span>
+                  <span class="hl-value text-gradient">2.79% ต่อปี</span>
+                  <span class="hl-note">(ดอกเบี้ยคงที่ Flat Rate)</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="hl-label">ผ่อนนานสูงสุด</span>
+                  <span class="hl-value">7 ปี (84 เดือน)</span>
+                  <span class="hl-note">เลือกระยะเวลาตามใจ</span>
+                </div>
+              </div>
+              <ul class="product-perks">
+                <li>รถยังมีขับ ไม่ต้องจอดรถค้ำประกัน</li>
+                <li>อนุมัติไวภายใน 1 วันทำการ</li>
+                <li>ปิดหนี้ก่อนกำหนดรับส่วนลดดอกเบี้ย</li>
+              </ul>
+              <div class="product-card-actions">
+                <button type="button" class="btn btn-primary btn-calc-loan" data-loan-type="auto"
+                  aria-label="คำนวณค่างวดสินเชื่อรถยนต์">
+                  คำนวณค่างวดรถ
+                </button>
+                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="สินเชื่อรถยนต์"
+                  aria-label="สอบถามเบลล่าเรื่องสินเชื่อรถยนต์">
+                  ถามเบลล่า
+                </button>
+              </div>
+            </article>
+
+            <!-- Product 3: Personal Loan -->
+            <article class="product-card glass-panel" id="product-personal-loan">
+              <div class="product-tag">ไม่ต้องค้ำ</div>
+              <div class="product-icon-wrap">💼</div>
+              <h3 class="product-name">สินเชื่อส่วนบุคคล Bella Speedy</h3>
+              <p class="product-summary">เสริมสภาพคล่องฉุกเฉิน รวมหนี้เพื่อลดภาระดอกเบี้ย
+                ไม่ต้องใช้หลักทรัพย์หรือบุคคลค้ำประกัน</p>
+              <div class="product-highlights">
+                <div class="highlight-item">
+                  <span class="hl-label">ดอกเบี้ยเริ่มต้น</span>
+                  <span class="hl-value text-gradient">9.99% ต่อปี</span>
+                  <span class="hl-note">(ลดต้นลดดอก Effective Rate)</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="hl-label">วงเงินสูงสุด</span>
+                  <span class="hl-value">5 เท่าของรายได้</span>
+                  <span class="hl-note">สูงสุด 2,000,000 บาท</span>
+                </div>
+              </div>
+              <ul class="product-perks">
+                <li>คิดดอกเบี้ยตามยอดเงินที่เบิกใช้จริง</li>
+                <li>ผ่อนชำระขั้นต่ำเริ่มต้นเพียง 500 บาท/เดือน</li>
+                <li>สมัครผ่านแอป รับเงินโอนเข้าบัญชีทันที</li>
+              </ul>
+              <div class="product-card-actions">
+                <button type="button" class="btn btn-primary btn-calc-loan" data-loan-type="personal"
+                  aria-label="คำนวณค่างวดสินเชื่อส่วนบุคคล">
+                  คำนวณสินเชื่อบุคคล
+                </button>
+                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="สินเชื่อส่วนบุคคล"
+                  aria-label="สอบถามเบลล่าเรื่องสินเชื่อส่วนบุคคล">
+                  ถามเบลล่า
+                </button>
+              </div>
+            </article>
+
+            <!-- Product 4: Business SME Loan -->
+            <article class="product-card glass-panel" id="product-sme-loan">
+              <div class="product-icon-wrap">🏢</div>
+              <h3 class="product-name">สินเชื่อเพื่อธุรกิจ SME & สตาร์ทอัพ</h3>
+              <p class="product-summary">เติมทุนหมุนเวียน ขยายสาขา สั่งซื้อสต็อกสินค้า
+                สำหรับผู้ประกอบการนิติบุคคลและบุคคลธรรมดา</p>
+              <div class="product-highlights">
+                <div class="highlight-item">
+                  <span class="hl-label">ดอกเบี้ยเริ่มต้น</span>
+                  <span class="hl-value text-gradient">MLR - 1.0%</span>
+                  <span class="hl-note">ตามระดับความเสี่ยงธุรกิจ</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="hl-label">วงเงินสูงสุด</span>
+                  <span class="hl-value">20 ล้านบาท</span>
+                  <span class="hl-note">รองรับ บสย. ค้ำประกัน</span>
+                </div>
+              </div>
+              <ul class="product-perks">
+                <li>มีทั้งเงินกู้ระยะยาว (Term Loan) และ O/D</li>
+                <li>ปลอดชำระเงินต้นสูงสุด 12 เดือนแรก</li>
+                <li>ทีมผู้เชี่ยวชาญดูแลโครงสร้างการเงินให้คำแนะนำ</li>
+              </ul>
+              <div class="product-card-actions">
+                <button type="button" class="btn btn-primary btn-calc-loan" data-loan-type="sme"
+                  aria-label="คำนวณค่างวดสินเชื่อธุรกิจ">
+                  คำนวณสินเชื่อ SME
+                </button>
+                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="สินเชื่อธุรกิจ SME"
+                  aria-label="สอบถามเบลล่าเรื่องสินเชื่อธุรกิจ">
+                  ถามเบลล่า
+                </button>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== PAGE 4: บัญชีเงินฝาก & วางแผนการออม (DEPOSITS) ==================== -->
+      <section class="page-view" id="deposits" aria-labelledby="heading-deposits" hidden>
+        <div class="content-container">
+          <div class="section-header">
+            <div class="pill-badge">💰 บัญชีเงินฝากและการออม</div>
+            <h2 id="heading-deposits" class="section-title">ประเภทบัญชีเงินฝากดอกเบี้ยสูง เพื่อทุกเป้าหมาย</h2>
+            <p class="section-desc">
+              ให้เงินทำงานอย่างปลอดภัย รับดอกเบี้ยสูงกว่าบัญชีออมทรัพย์ทั่วไป พร้อมระบบวางแผนการออมตามเป้าหมาย
+            </p>
+          </div>
+
+          <div class="products-grid">
+
+            <!-- Deposit Product 1 -->
+            <article class="product-card glass-panel" id="deposit-esavings">
+              <div class="product-tag popular-tag">แนะนำ</div>
+              <div class="product-icon-wrap">📱</div>
+              <h3 class="product-name">Bella e-Savings บัญชีเงินฝากดิจิทัล</h3>
+              <p class="product-summary">เปิดบัญชีง่ายผ่านมือถือ ไม่มียอดขั้นต่ำ รับดอกเบี้ยสูงตั้งแต่บาทแรก
+                ถอนได้ตลอดเวลาไม่เสียสิทธิ์</p>
+              <div class="product-highlights">
+                <div class="highlight-item">
+                  <span class="hl-label">อัตราดอกเบี้ยสูงถึง</span>
+                  <span class="hl-value text-gradient">2.20% ต่อปี</span>
+                  <span class="hl-note">สำหรับยอดเงินฝากไม่เกิน 100,000 บาท</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="hl-label">การจ่ายดอกเบี้ย</span>
+                  <span class="hl-value">ทุกเดือน</span>
+                  <span class="hl-note">โอนเข้าบัญชีอัตโนมัติ</span>
+                </div>
+              </div>
+              <ul class="product-perks">
+                <li>เปิดบัญชีออนไลน์ ไม่ต้องไปสาขา ไม่มีสมุดคู่ฝาก</li>
+                <li>โอนเงิน จ่ายบิล ฟรีค่าธรรมเนียมไม่จำกัดครั้ง</li>
+                <li>จัดการแบ่งกระเป๋าเงินออมย่อย (Saving Pockets) ได้</li>
+              </ul>
+              <div class="product-card-actions">
+                <button type="button" class="btn btn-primary btn-apply-deposit" data-account="esavings"
+                  aria-label="เปิดบัญชีเงินฝาก Bella e-Savings">
+                  สนใจเปิดบัญชี
+                </button>
+                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="บัญชีเงินฝาก e-Savings"
+                  aria-label="สอบถามเบลล่าเรื่องบัญชี e-Savings">
+                  ถามเบลล่า
+                </button>
+              </div>
+            </article>
+
+            <!-- Deposit Product 2 -->
+            <article class="product-card glass-panel" id="deposit-taxfree">
+              <div class="product-icon-wrap">🎯</div>
+              <h3 class="product-name">เงินฝากประจำปลอดภาษี 24 เดือน</h3>
+              <p class="product-summary">ฝึกวินัยการออมอย่างสม่ำเสมอ ฝากเท่ากันทุกเดือน ปลอดภาษีดอกเบี้ยเงินฝาก 100%</p>
+              <div class="product-highlights">
+                <div class="highlight-item">
+                  <span class="hl-label">อัตราดอกเบี้ย</span>
+                  <span class="hl-value text-gradient">2.65% ต่อปี</span>
+                  <span class="hl-note">ปลอดภาษี ณ ที่จ่าย (ได้รับเต็ม)</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="hl-label">ยอดฝากต่อเดือน</span>
+                  <span class="hl-value">1,000 - 25,000 บ.</span>
+                  <span class="hl-note">ฝากติดต่อกัน 24 เดือน</span>
+                </div>
+              </div>
+              <ul class="product-perks">
+                <li>ไม่เสียภาษีดอกเบี้ยเงินฝาก 15%</li>
+                <li>ตั้งตัดเงินฝากอัตโนมัติจากบัญชีเงินเดือนได้</li>
+                <li>เหมาะสำหรับการสร้างเงินเก็บก้อนแรก</li>
+              </ul>
+              <div class="product-card-actions">
+                <button type="button" class="btn btn-primary btn-apply-deposit" data-account="taxfree"
+                  aria-label="เปิดบัญชีเงินฝากประจำปลอดภาษี">
+                  สนใจเปิดบัญชี
+                </button>
+                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="เงินฝากประจำปลอดภาษี"
+                  aria-label="สอบถามเบลล่าเรื่องเงินฝากปลอดภาษี">
+                  ถามเบลล่า
+                </button>
+              </div>
+            </article>
+
+            <!-- Deposit Product 3 -->
+            <article class="product-card glass-panel" id="deposit-stepup">
+              <div class="product-icon-wrap">📈</div>
+              <h3 class="product-name">เงินฝากประจำ Step-Up 36 เดือน</h3>
+              <p class="product-summary">ยิ่งฝากนาน ดอกเบี้ยยิ่งเพิ่มขึ้น
+                เหมาะสำหรับเงินเย็นที่ต้องการผลตอบแทนแน่นอนและปลอดภัย</p>
+              <div class="product-highlights">
+                <div class="highlight-item">
+                  <span class="hl-label">ดอกเบี้ยสูงสุดถึง</span>
+                  <span class="hl-value text-gradient">3.00% ต่อปี</span>
+                  <span class="hl-note">(เฉลี่ย 2.50% ต่อปี)</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="hl-label">ยอดเงินเปิดบัญชี</span>
+                  <span class="hl-value">ขั้นต่ำ 10,000 บ.</span>
+                  <span class="hl-note">จ่ายดอกเบี้ยทุก 3 เดือน</span>
+                </div>
+              </div>
+              <ul class="product-perks">
+                <li>อัตราดอกเบี้ยเพิ่มขึ้นเป็นขั้นบันไดทุกปี</li>
+                <li>ถอนก่อนครบกำหนดบางส่วนได้ตามเกณฑ์</li>
+                <li>คุ้มครองเงินฝากตามสถาบันคุ้มครองเงินฝาก</li>
+              </ul>
+              <div class="product-card-actions">
+                <button type="button" class="btn btn-primary btn-apply-deposit" data-account="stepup"
+                  aria-label="เปิดบัญชีเงินฝาก Step-Up">
+                  สนใจเปิดบัญชี
+                </button>
+                <button type="button" class="btn btn-outline btn-ask-bella" data-topic="เงินฝากประจำ Step-Up"
+                  aria-label="สอบถามเบลล่าเรื่องเงินฝาก Step-Up">
+                  ถามเบลล่า
+                </button>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Savings Goal Simulator Box (ตรงตาม AI_วางแผนการออม) -->
+          <div class="savings-simulator-card glass-panel" id="savings-simulator-box">
+            <div class="sim-header">
+              <div class="sim-badge">🎯 AI วางแผนการออมตามเป้าหมาย</div>
+              <h3 class="sim-title">ต้องใช้เวลากี่เดือน ถึงจะเก็บเงินได้ตามเป้า?</h3>
+              <p class="sim-desc">คำนวณระยะเวลาออมเงินและจำนวนเงินที่ต้องเก็บเพิ่ม ตามหลักการวางแผนการเงินของเบลล่า</p>
+            </div>
+
+            <form id="savings-plan-form" class="sim-form" onsubmit="return false;">
+              <div class="sim-inputs-grid">
+
+                <div class="form-group">
+                  <label for="saving-goal-select">เป้าหมายการออมของคุณ</label>
+                  <select id="saving-goal-select" name="saving_goal" class="form-select">
+                    <option value="เงินสำรองฉุกเฉิน">เผื่อฉุกเฉิน</option>
+                    <option value="เงินดาวน์บ้าน">ดาวน์บ้าน</option>
+                    <option value="เงินดาวน์รถ">ดาวน์รถ</option>
+                    <option value="ออมไว้ลงทุน">ออมไว้ลงทุน</option>
+                    <option value="การศึกษาของลูก">การศึกษาของลูก</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="saving-target-input">จำนวนเงินเป้าหมายที่ต้องการ (บาท)</label>
+                  <div class="input-with-affix">
+                    <input type="number" id="saving-target-input" name="saving_target_amount" value="300000" min="5000"
+                      step="5000" class="form-input">
+                    <span class="affix">บาท</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="saving-current-input">เงินออมที่มีอยู่ปัจจุบัน (บาท)</label>
+                  <div class="input-with-affix">
+                    <input type="number" id="saving-current-input" name="saving_current_amount" value="50000" min="0"
+                      step="5000" class="form-input">
+                    <span class="affix">บาท</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="saving-monthly-input">ตั้งใจจะออมเพิ่มเดือนละ (บาท)</label>
+                  <div class="input-with-affix">
+                    <input type="number" id="saving-monthly-input" name="saving_monthly_amount" value="10000" min="500"
+                      step="500" class="form-input">
+                    <span class="affix">บาท/เดือน</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="sim-result-banner" id="savings-sim-result">
+                <div class="res-stat">
+                  <span class="res-label">เงินที่ต้องออมเพิ่มอีก:</span>
+                  <strong class="res-num text-warning" id="saving-res-remaining">฿250,000</strong>
+                </div>
+                <div class="res-divider" aria-hidden="true"></div>
+                <div class="res-stat">
+                  <span class="res-label">ระยะเวลาที่ต้องใช้:</span>
+                  <strong class="res-num text-gradient" id="saving-res-months">25 เดือน</strong>
+                  <span class="res-sub" id="saving-res-years">(ประมาณ 2 ปี 1 เดือน)</span>
+                </div>
+                <div class="res-action">
+                  <button type="button" class="btn btn-call-bella" id="btn-saving-ask-bella"
+                    aria-label="ให้น้องเบลล่าช่วยวางแผนการออมนี้">
+                    <span>ปรึกษาเบลล่าเพื่อวางแผนออม</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== PAGE 5: คำนวณค่างวด (CALCULATOR) ==================== -->
+      <section class="page-view" id="calculator" aria-labelledby="heading-calculator" hidden>
+        <div class="content-container">
+          <div class="section-header text-center">
+            <div class="pill-badge">🧮 เครื่องคำนวณเงินกู้</div>
+            <h2 id="heading-calculator" class="section-title">คำนวณค่างวดและแผนการผ่อนชำระ</h2>
+            <p class="section-desc">
+              ประเมินค่างวดต่อเดือน ดอกเบี้ยรวม และวางแผนการกู้เงินให้สอดคล้องกับรายได้ของคุณ
+            </p>
+          </div>
+
+          <div class="calculator-card glass-panel">
+            <div class="calculator-grid">
+
+              <!-- Controls Form Column -->
+              <form id="loan-calculator-form" class="calc-form" onsubmit="return false;">
+
+                <!-- Select Loan Type -->
+                <div class="form-group">
+                  <label for="calc-loan-type">ประเภทสินเชื่อที่ต้องการคำนวณ</label>
+                  <select id="calc-loan-type" name="calc_loan_type" class="form-select">
+                    <option value="home" data-rate="3.25" data-years="30">สินเชื่อบ้าน (อัตราดอกเบี้ย 3.25% ต่อปี)
+                    </option>
+                    <option value="auto" data-rate="2.79" data-years="5">สินเชื่อรถยนต์ (อัตราดอกเบี้ยคงที่ 2.79% ต่อปี)
+                    </option>
+                    <option value="personal" data-rate="9.99" data-years="3">สินเชื่อส่วนบุคคล (อัตราดอกเบี้ย 9.99%
+                      ต่อปี)</option>
+                    <option value="sme" data-rate="6.50" data-years="7">สินเชื่อธุรกิจ SME (อัตราดอกเบี้ย 6.50% ต่อปี)
+                    </option>
+                  </select>
+                </div>
+
+                <!-- Loan Amount Slider & Input -->
+                <div class="form-group">
+                  <div class="label-row">
+                    <label for="calc-amount-input">วงเงินที่ต้องการกู้ (บาท)</label>
+                    <span class="live-val-badge" id="calc-amount-display">฿1,500,000</span>
+                  </div>
+                  <input type="number" id="calc-amount-input" name="calc_amount" min="10000" max="20000000" step="10000"
+                    value="1500000" class="form-input">
+                  <input type="range" id="calc-amount-range" min="50000" max="10000000" step="50000" value="1500000"
+                    class="range-slider" aria-label="ปรับวงเงินกู้">
+                  <div class="range-ticks">
+                    <span>50,000</span>
+                    <span>5,000,000</span>
+                    <span>10,000,000</span>
+                  </div>
+                </div>
+
+                <!-- Term Slider & Input -->
+                <div class="form-group">
+                  <div class="label-row">
+                    <label for="calc-term-input">ระยะเวลาผ่อนชำระ (ปี)</label>
+                    <span class="live-val-badge" id="calc-term-display">30 ปี (360 งวด)</span>
+                  </div>
+                  <input type="number" id="calc-term-input" name="calc_term" min="1" max="40" step="1" value="30"
+                    class="form-input">
+                  <input type="range" id="calc-term-range" min="1" max="35" step="1" value="30" class="range-slider"
+                    aria-label="ปรับระยะเวลาผ่อนชำระ">
+                  <div class="range-ticks">
+                    <span>1 ปี</span>
+                    <span>15 ปี</span>
+                    <span>35 ปี</span>
+                  </div>
+                </div>
+
+                <!-- Interest Rate Input -->
+                <div class="form-group">
+                  <div class="label-row">
+                    <label for="calc-rate-input">อัตราดอกเบี้ยต่อปี (%)</label>
+                    <span class="field-hint">ปรับเปลี่ยนได้ตามโปรโมชั่น</span>
+                  </div>
+                  <div class="input-with-affix">
+                    <input type="number" id="calc-rate-input" name="calc_rate" min="1.0" max="25.0" step="0.05"
+                      value="3.25" class="form-input">
+                    <span class="affix">% ต่อปี</span>
+                  </div>
+                </div>
+
+              </form>
+
+              <!-- Results Summary Column -->
+              <div class="calc-result-panel">
+                <div class="monthly-payment-card">
+                  <span class="payment-title">ค่างวดที่ต้องผ่อนชำระประมาณ</span>
+                  <div class="payment-amount text-gradient" id="calc-monthly-payment">฿6,524</div>
+                  <span class="payment-unit">ต่อเดือน</span>
+                  <p class="payment-disclaimer">*เป็นตัวเลขประมาณการเบื้องต้น ค่างวดจริงขึ้นอยู่กับเงื่อนไขการอนุมัติ
+                  </p>
+                </div>
+
+                <div class="breakdown-list">
+                  <div class="breakdown-item">
+                    <span class="b-label">วงเงินกู้สุทธิ:</span>
+                    <span class="b-val" id="calc-breakdown-principal">฿1,500,000</span>
+                  </div>
+                  <div class="breakdown-item">
+                    <span class="b-label">ดอกเบี้ยรวมตลอดสัญญา:</span>
+                    <span class="b-val text-warning" id="calc-breakdown-interest">฿848,640</span>
+                  </div>
+                  <div class="breakdown-item total-row">
+                    <span class="b-label">ยอดชำระรวมทั้งหมด:</span>
+                    <span class="b-val" id="calc-breakdown-total">฿2,348,640</span>
+                  </div>
+                  <div class="breakdown-item">
+                    <span class="b-label">รายได้ขั้นต่ำที่แนะนำ:</span>
+                    <span class="b-val text-success" id="calc-recommended-income">฿18,640 / เดือน</span>
+                  </div>
+                </div>
+
+                <div class="calc-panel-actions">
+                  <button type="button" class="btn btn-call-bella w-full" id="btn-calc-ask-bella"
+                    aria-label="ให้น้องเบลล่าช่วยประเมินวงเงินและค่างวดนี้">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                      <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                    </svg>
+                    <span>ปรึกษาเบลล่าเรื่องวงเงินกู้นี้</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== PAGE 6: วางแผนเกษียณ (RETIREMENT) ==================== -->
+      <section class="page-view" id="retirement" aria-labelledby="heading-retirement" hidden>
+        <div class="content-container">
+          <div class="section-header text-center">
+            <div class="pill-badge">🌴 เกษียณอย่างมั่งคั่ง</div>
+            <h2 id="heading-retirement" class="section-title">วางแผนเตรียมเงินสำหรับวัยเกษียณ</h2>
+            <p class="section-desc">
+              ประเมินจำนวนปีที่เหลือก่อนเกษียณ และเงินทุนที่ต้องมีเพื่อให้ใช้ชีวิตหลังเกษียณได้อย่างไร้กังวล
+            </p>
+          </div>
+
+          <div class="retirement-card glass-panel">
+            <form id="retirement-calc-form" class="retire-form" onsubmit="return false;">
+              <div class="retire-grid">
+
+                <div class="form-group">
+                  <label for="retire-current-age">อายุปัจจุบันของคุณ (ปี)</label>
+                  <div class="input-with-affix">
+                    <input type="number" id="retire-current-age" name="retirement_current_age" value="32" min="18"
+                      max="75" class="form-input">
+                    <span class="affix">ปี</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="retire-target-age">อายุที่ตั้งใจจะเกษียณ (ปี)</label>
+                  <div class="input-with-affix">
+                    <input type="number" id="retire-target-age" name="retirement_target_age" value="60" min="40"
+                      max="85" class="form-input">
+                    <span class="affix">ปี</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="retire-monthly-expense">คาดว่าจะมีค่าใช้จ่ายหลังเกษียณ (บาท/เดือน)</label>
+                  <div class="input-with-affix">
+                    <input type="number" id="retire-monthly-expense" name="retirement_monthly_expense" value="25000"
+                      min="5000" step="1000" class="form-input">
+                    <span class="affix">บาท/เดือน</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="retire-current-savings">เงินเก็บสำหรับเกษียณที่มีอยู่แล้ว (บาท)</label>
+                  <div class="input-with-affix">
+                    <input type="number" id="retire-current-savings" name="retirement_current_savings" value="200000"
+                      min="0" step="10000" class="form-input">
+                    <span class="affix">บาท</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Retirement Outcome Display -->
+              <div class="retire-result-box" id="retirement-result-box">
+                <div class="retire-metric">
+                  <span class="rm-label">ระยะเวลาเตรียมตัวที่เหลือ:</span>
+                  <strong class="rm-val text-gradient" id="retire-res-years-left">28 ปี</strong>
+                  <span class="rm-sub">(ก่อนถึงอายุเกษียณ 60 ปี)</span>
+                </div>
+                <div class="retire-metric">
+                  <span class="rm-label">เงินกองทุนเกษียณที่ต้องเตรียม (อยู่ถึงอายุ 80 ปี):</span>
+                  <strong class="rm-val text-warning" id="retire-res-fund-needed">฿6,000,000</strong>
+                  <span class="rm-sub">(คิดจากค่าใช้จ่าย 25,000 บ./ด. เป็นเวลา 20 ปี)</span>
+                </div>
+                <div class="retire-metric">
+                  <span class="rm-label">ต้องออมเพิ่มเฉลี่ยประมาณ:</span>
+                  <strong class="rm-val text-success" id="retire-res-monthly-target">฿17,262 / เดือน</strong>
+                  <span class="rm-sub">(ยังไม่รวมผลตอบแทนจากการลงทุน)</span>
+                </div>
+              </div>
+
+              <div class="text-center mt-4">
+                <button type="button" class="btn btn-call-bella" id="btn-retire-ask-bella"
+                  aria-label="ปรึกษาน้องเบลล่าเรื่องแผนเกษียณ">
+                  <span>ปรึกษาเบลล่าเพื่อวางแผนเกษียณ</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== PAGE 7: คำถามที่พบบ่อย (FAQ) ==================== -->
+      <section class="page-view" id="faq" aria-labelledby="heading-faq" hidden>
+        <div class="content-container">
+          <div class="section-header text-center">
+            <div class="pill-badge">❓ ข้อสงสัยยอดนิยม</div>
+            <h2 id="heading-faq" class="section-title">คำถามที่พบบ่อย (FAQ)</h2>
+            <p class="section-desc">
+              รวบรวมข้อสงสัยเกี่ยวกับสินเชื่อ บัญชีเงินฝาก และขั้นตอนการให้บริการ
+            </p>
+          </div>
+
+          <div class="faq-list">
+
+            <div class="faq-item glass-panel">
+              <button type="button" class="faq-question" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
+                <span>คุณสมบัติเบื้องต้นสำหรับผู้ขอสินเชื่อกู้เงินมีอะไรบ้าง?</span>
+                <span class="faq-chevron" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
+                <p>ผู้ขอสินเชื่อต้องมีสัญชาติไทย อายุ 20 ปีขึ้นไป (และอายุรวมระยะเวลาผ่อนไม่เกิน 65-70
+                  ปีขึ้นกับประเภทสินเชื่อ) มีรายได้ประจำขั้นต่ำ 15,000 บาท/เดือน มีอายุงานตั้งแต่ 6 เดือนขึ้นไป
+                  และมีประวัติเครดิตบูโรที่ปกติครับ</p>
+              </div>
+            </div>
+
+            <div class="faq-item glass-panel">
+              <button type="button" class="faq-question" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
+                <span>บัญชี Bella e-Savings คิดดอกเบี้ยอย่างไร และเสียภาษีหรือไม่?</span>
+                <span class="faq-chevron" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
+                <p>Bella e-Savings คำนวณดอกเบี้ยแบบรายวันตามยอดเงินคงเหลือ และจ่ายดอกเบี้ยโอนเข้าบัญชีให้ทุกเดือน
+                  สำหรับดอกเบี้ยรวมทุกบัญชีไม่เกิน 20,000 บาทต่อปี จะได้รับการยกเว้นภาษีตามเกณฑ์ของกรมสรรพากรครับ</p>
+              </div>
+            </div>
+
+            <div class="faq-item glass-panel">
+              <button type="button" class="faq-question" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
+                <span>สามารถกู้ร่วมได้สูงสุดกี่คน และต้องเป็นใครบ้าง?</span>
+                <span class="faq-chevron" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
+                <p>สำหรับสินเชื่อบ้าน สามารถกู้ร่วมได้สูงสุดถึง 3 คน โดยผู้กู้ร่วมต้องมีความสัมพันธ์ทางสายเลือด เช่น
+                  บิดา มารดา พี่น้อง หรือคู่สมรส (ทั้งที่จดทะเบียนและไม่ได้จดทะเบียน รวมถึงคู่รัก LGBTQ+)
+                  ที่มีรายได้ประจำครับ</p>
+              </div>
+            </div>
+
+            <div class="faq-item glass-panel">
+              <button type="button" class="faq-question" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
+                <span>การตรวจสุขภาพการเงินในเว็บนี้มีความปลอดภัยของข้อมูลหรือไม่?</span>
+                <span class="faq-chevron" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
+                <p>ปลอดภัยอย่างสมบูรณ์แบบครับ การคำนวณทั้งหมดเป็นการประเมินเบื้องต้นในฝั่งเบราว์เซอร์ของท่าน
+                  ไม่มีการเก็บรหัสผ่าน หมายเลขบัตรเครดิต หรือข้อมูลส่วนตัวที่ระบุตัวตน (PII) ใดๆ ทั้งสิ้นครับ</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- WebAvatar Widget Settings Modal -->
+  <dialog id="settings-modal" class="settings-modal-dialog" aria-labelledby="modal-settings-title">
+    <div class="modal-box glass-panel">
+      <div class="modal-header">
+        <h3 id="modal-settings-title" class="modal-title">⚙️ ตั้งค่า WebAvatar Widget</h3>
+        <button type="button" class="btn-close-modal" id="btn-close-settings"
+          aria-label="ปิดหน้าต่างตั้งค่า">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          กรอก <strong>Widget ID</strong> ของคุณที่ได้จากแพลตฟอร์ม WebAvatar เพื่อเปิดใช้งานน้องเบลล่า 3D Avatar
+          บนหน้าเว็บนี้
+        </p>
+
+        <div class="form-group">
+          <label for="input-widget-id">WebAvatar Widget ID (8 หลัก)</label>
+          <input type="text" id="input-widget-id" class="form-input" placeholder="เช่น vx6pgqf1" maxlength="32">
+          <span class="field-hint">ระบบจะบันทึกใน LocalStorage และโหลดสคริปต์อัตโนมัติ</span>
+        </div>
+
+        <div class="widget-status-card" id="widget-status-card">
+          <div class="status-row">
+            <span class="lbl">สถานะ Widget:</span>
+            <span class="val text-warning" id="modal-widget-status">ยังไม่ได้ตั้งค่า Widget ID</span>
+          </div>
+          <div class="status-row">
+            <span class="lbl">Build Script:</span>
+            <span class="val">Production (chat-widget.js)</span>
+          </div>
+        </div>
+
+        <div class="quick-links-note">
+          <span>ยังไม่มี Widget ID?</span>
+          <a href="https://webavatar-gen-frontend.vercel.app/widget-manage" target="_blank" rel="noopener noreferrer"
+            class="link-external">
+            จัดการ Widget บน WebAvatar Platform &rarr;
+          </a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" id="btn-cancel-settings">ยกเลิก</button>
+        <button type="button" class="btn btn-primary" id="btn-save-settings">บันทึก & ใช้งาน</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Floating Toast Notification -->
+  <div id="toast-notification" class="toast-container" role="status" aria-live="polite" hidden>
+    <span class="toast-message" id="toast-message"></span>
+  </div>
+
+  <!-- Application Logic (3-Lead ES Module Entry Point) -->
+  <script type="module" src="app.js?v=7"></script>
+
+  <!-- Inline SPA Navigation & Sidebar Collapse Safeguard (Works even if app.js is cached) -->
+  <script>
+    (function () {
+      function fallbackNavigate(rawId, updateHash) {
+        var cleanId = (rawId || '').replace(/^#/, '').trim();
+        var map = {
+          'deposits': 'deposits',
+          'deposit': 'deposits',
+          'savings': 'deposits',
+          'saving': 'deposits',
+          'savings-simulator-box': 'deposits',
+          'saving-plan': 'deposits',
+          'deposit-esavings': 'deposits',
+          'deposit-taxfree': 'deposits',
+          'deposit-stepup': 'deposits',
+          'retirement': 'retirement',
+          'retire': 'retirement',
+          'quiz': 'quiz',
+          'health': 'quiz',
+          'health-check': 'quiz',
+          'calculator': 'calculator',
+          'calc': 'calculator',
+          'loans': 'loans',
+          'loan': 'loans',
+          'investment': 'loans',
+          'faq': 'faq',
+          'welcome': 'welcome'
+        };
+        var targetPage = map[cleanId] || cleanId || 'welcome';
+        var targetSection = document.getElementById(targetPage);
+        if (!targetSection || !targetSection.classList.contains('page-view')) {
+          targetPage = 'welcome';
+        }
+
+        document.querySelectorAll('.page-view').forEach(function (sec) {
+          var isActive = sec.id === targetPage;
+          sec.classList.toggle('active', isActive);
+          if (isActive) {
+            sec.removeAttribute('hidden');
+            sec.hidden = false;
+          } else {
+            sec.setAttribute('hidden', '');
+            sec.hidden = true;
+          }
+        });
+
+        document.querySelectorAll('.sidebar-nav .nav-item').forEach(function (link) {
+          var linkPage = link.getAttribute('data-page') || (link.getAttribute('href') || '').replace(/^#/, '');
+          var isMatch = linkPage === targetPage;
+          link.classList.toggle('active', isMatch);
+          if (isMatch) {
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+
+        if (updateHash && window.location.hash !== '#' + targetPage) {
+          history.pushState({ page: targetPage }, '', '#' + targetPage);
+        }
+      }
+
+      // Ensure every [data-page] and sidebar nav item switches pages on click
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest('[data-page], .sidebar-nav .nav-item');
+        if (link) {
+          var page = link.getAttribute('data-page') || (link.getAttribute('href') || '').replace(/^#/, '');
+          if (page) {
+            e.preventDefault();
+            if (typeof window.navigateToPage === 'function') {
+              window.navigateToPage(page, true);
+            } else {
+              fallbackNavigate(page, true);
+            }
+          }
+        }
+      }, true);
+
+      window.addEventListener('hashchange', function () {
+        var h = window.location.hash.replace(/^#/, '');
+        if (h) fallbackNavigate(h, false);
+      });
+
+      var sidebar = document.getElementById('app-sidebar');
+      var collapseBtn = document.getElementById('btn-sidebar-collapse');
+      if (sidebar && collapseBtn && !collapseBtn.dataset.boundCollapse) {
+        collapseBtn.dataset.boundCollapse = 'true';
+        collapseBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          var isCollapsed = sidebar.classList.toggle('collapsed');
+          collapseBtn.setAttribute('aria-expanded', String(!isCollapsed));
+        });
+      }
+
+      if (window.location.hash) {
+        fallbackNavigate(window.location.hash, false);
+      }
+    })();
+  </script>
+
+  <!-- WebAvatar Widget Loader (Production Build) -->
+  <script>
+    (function () {
+      var savedId = localStorage.getItem('bella_webavatar_widget_id');
+      if (savedId) {
+        window.ChatWidgetConfig = {
+          widgetId: savedId
+        };
+        if (!document.getElementById('webavatar-jssdk')) {
+          var script = document.createElement('script');
+          script.id = 'webavatar-jssdk';
+          script.src = 'https://webavatar.didthat.cc/chat-widget.js';
+          script.async = true;
+          (document.head || document.body).appendChild(script);
+        }
+      }
+    })();
+  </script>
+</body>
+
 </html>
