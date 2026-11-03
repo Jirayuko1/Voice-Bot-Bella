@@ -60,6 +60,9 @@ const ELEMENT_TO_PAGE_MAP = {
   'invest': 'loans',
   'funds': 'loans',
   'fund': 'loans',
+  'investment-funds-section': 'loans',
+  'loan-products-section': 'loans',
+  'loan-products': 'loans',
   'product-home-loan': 'loans',
   'product-auto-loan': 'loans',
   'product-personal-loan': 'loans',
@@ -111,6 +114,16 @@ function resolvePageId(rawId) {
     (!hashPart || hashPart === 'deposits' || hashPart === 'savings' || hashPart === 'saving' || hashPart === 'savings-simulator-box');
   if (isSavingsGeneral) {
     return { pageId: 'deposits', scrollTargetId: 'savings-simulator-box' };
+  }
+
+  // หากระบุเรื่องกองทุนโดยตรง ให้เลื่อนไปที่ส่วนกองทุนแนะนำ (#investment-funds-section)
+  if (candidate === 'funds' || candidate === 'fund' || hashPart === 'funds' || hashPart === 'fund' || hashPart === 'investment-funds-section') {
+    return { pageId: 'loans', scrollTargetId: 'investment-funds-section' };
+  }
+
+  // หากระบุเรื่องผลิตภัณฑ์สินเชื่อ ให้เลื่อนไปที่ส่วนสินเชื่อ (#loan-products-section)
+  if (candidate === 'loan-products' || hashPart === 'loan-products' || hashPart === 'loan-products-section') {
+    return { pageId: 'loans', scrollTargetId: 'loan-products-section' };
   }
 
   if (hashPart) {
